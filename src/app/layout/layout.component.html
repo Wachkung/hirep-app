@@ -13,32 +13,15 @@
         </div>
     </clr-header>
 
-    <!-- <nav class="subnav" [clr-nav-level]="1">
+    <nav class="subnav" [clr-nav-level]="1">
         <ul class="nav">
-            <clr-dropdown>
+            <clr-dropdown *ngFor="let MGrp of getMenuGrp">
                 <button class="nav-link active" clrDropdownTrigger>
-                    <clr-icon shape="flask" class="is-solid"></clr-icon> Hi OPD Report
+                    <clr-icon shape="flask" class="is-solid"></clr-icon> {{MGrp.menu_name}}
                 </button>
-                <clr-dropdown-menu *clrIfOpen>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" [routerLink]="['../home]" routerLinkActive="active" clrDropdownItem>
-                            <clr-icon shape="flask" class="is-solid"></clr-icon> Home</a>
-                    </li>
-                </clr-dropdown-menu>
-            </clr-dropdown>
-            <clr-dropdown>
-                <button class="nav-link" clrDropdownTrigger>
-                    <clr-icon shape="bar-chart" class="is-solid"></clr-icon> Hi IPD Report
-                </button>
-                <clr-dropdown-menu *clrIfOpen>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" [routerLink]="['../about]" routerLinkActive="active" clrDropdownItem>
-                            <clr-icon shape="bar-chart" class="is-solid"></clr-icon> About</a>
-                    </li>
-                </clr-dropdown-menu>
             </clr-dropdown>
         </ul>
-    </nav> -->
+    </nav>
 
     <div class="content-container">
         <div class="content-area">
