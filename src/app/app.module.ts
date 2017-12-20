@@ -6,14 +6,22 @@ import { HttpModule } from '@angular/http';
 import { ClarityModule } from '@clr/angular';
 import { AppComponent } from './app.component';
 import { ROUTING } from "./app.routing";
+import { environment } from "environments/environment.prod";
+
+
 import { HomeComponent } from "./home/home.component";
 import { AboutComponent } from "./about/about.component";
+import { LayoutComponent } from './layout/layout.component';
+
+
+import { MenuGrpService } from './common-services/menugrp.service';
 
 @NgModule({
     declarations: [
         AppComponent,
         AboutComponent,
-        HomeComponent
+        HomeComponent,
+        LayoutComponent
     ],
     imports: [
         BrowserAnimationsModule,
@@ -23,7 +31,11 @@ import { AboutComponent } from "./about/about.component";
         ClarityModule,
         ROUTING
     ],
-    providers: [],
+    providers: [
+        { provide: 'API_URL', useValue: environment.apiUrl },
+        MenuGrpService,
+
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {
