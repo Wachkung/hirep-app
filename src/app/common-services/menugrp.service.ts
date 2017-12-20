@@ -20,5 +20,16 @@ export class MenuGrpService {
                 })
         })
     }
+    getMenuItem(menu_id) {
+        return new Promise((resolve, reject) => {
+            this.http.get(`${this.url}/items/${menu_id}`)
+                .map(res => res.json())
+                .subscribe(data => {
+                    resolve(data);
+                }, error => {
+                    reject(error);
+                })
+        })
+    }
 
 }

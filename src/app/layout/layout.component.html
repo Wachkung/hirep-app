@@ -19,6 +19,13 @@
                 <button class="nav-link active" clrDropdownTrigger>
                     <clr-icon shape="flask" class="is-solid"></clr-icon> {{MGrp.menu_name}}
                 </button>
+                <clr-dropdown-menu *clrIfOpen>
+                    <li class="nav-item" *ngFor="let MTyp of getMenuTyp">
+                        <a class="nav-link" href="#" [routerLink]="['./MGrp.menu_name']" routerLinkActive="active" clrDropdownItem>
+                            <clr-icon shape="bar-chart" class="is-solid"></clr-icon> {{MTyp.item_name}}</a>
+                    </li>
+                </clr-dropdown-menu>
+
             </clr-dropdown>
         </ul>
     </nav>
