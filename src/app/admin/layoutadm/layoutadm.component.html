@@ -1,0 +1,33 @@
+<clr-main-container>
+    <clr-header class="header-5">
+        <div class="branding">
+            <a href="#" class="nav-link">
+                <clr-icon shape="dashboard" class="has-badge"></clr-icon>
+                <span class="title">Hirep</span>
+            </a>
+        </div>
+        <div class="header-actions">
+            <a href="#" routerLinkActive="active" class="nav-link nav-icon">
+                <!-- LOGIN <clr-icon shape="login"></clr-icon> -->LOGOUT
+            </a>
+        </div>
+    </clr-header>
+
+    <nav class="subnav" [clr-nav-level]="1">
+        <ul class="nav">
+            <clr-dropdown *ngFor="let MGrp of getMenuGrp">
+                <li class="nav-item" *ngFor="let MTyp of getMenuTyp">
+                    <a class="nav-link" href="#" [routerLink]="['./home']" routerLinkActive="active" clrDropdownItem>
+                        <clr-icon shape="bar-chart" class="is-solid"></clr-icon> Home</a>
+                </li>
+
+            </clr-dropdown>
+        </ul>
+    </nav>
+
+    <div class="content-container">
+        <div class="content-area">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</clr-main-container>

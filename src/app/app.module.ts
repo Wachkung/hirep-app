@@ -13,9 +13,11 @@ import { HomeComponent } from "./home/home.component";
 import { AboutComponent } from "./about/about.component";
 import { LayoutComponent } from './layout/layout.component';
 
+import { AdminModule } from './admin/admin.module';
 
 import { MenuGrpService } from './common-services/menugrp.service';
 import { DtrComponent } from './dtr/dtr.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
     declarations: [
@@ -23,7 +25,8 @@ import { DtrComponent } from './dtr/dtr.component';
         AboutComponent,
         HomeComponent,
         LayoutComponent,
-        DtrComponent
+        DtrComponent,
+        LoginComponent
     ],
     imports: [
         BrowserAnimationsModule,
@@ -31,6 +34,7 @@ import { DtrComponent } from './dtr/dtr.component';
         FormsModule,
         HttpModule,
         ClarityModule,
+        AdminModule,
         ROUTING
     ],
     providers: [
