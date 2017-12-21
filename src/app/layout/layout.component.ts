@@ -11,7 +11,7 @@ export class LayoutComponent implements OnInit {
     getMenuTyp: any = [];
     getRout: any = [];
     menu_id: any;
-
+    var_menu_id: any;
     constructor(
         private menuGrpService: MenuGrpService,
 
@@ -20,18 +20,19 @@ export class LayoutComponent implements OnInit {
 
     ngOnInit() {
         this.ShowMenuGroup();
-        this.ShowMenu();
+        // this.ShowMenu();
     }
     ShowMenuGroup() {
         this.getMenuGrp = [];
-
         this.menuGrpService.getMenuGrp()
             .then((rows: any) => {
                 if (rows.ok) {
                     this.getMenuGrp = rows.rows;
-                    // let menu_id = this.getMenuGrp;
-
+                    // rows.length;
                     console.log(this.getMenuGrp);
+                    // console.log(this.getMenuGrp[4].menu_id);
+
+
                 } else {
                     console.log(JSON.stringify(rows.error));
                 }
@@ -40,9 +41,11 @@ export class LayoutComponent implements OnInit {
                 console.log("Server Error")
             })
     }
-    ShowMenu() {
+    ShowMenu(menu_id) {
+        this.menu_id = menu_id;
+        console.log(this.menu_id);
         this.getMenuTyp = [];
-        this.menuGrpService.getMenuItem(this.getMenuGrp.menu_id)
+        this.menuGrpService.getMenuItem(this.menu_id)
             .then((rows: any) => {
                 if (rows.ok) {
                     this.getMenuTyp = rows.rows;
@@ -54,7 +57,6 @@ export class LayoutComponent implements OnInit {
             .catch(() => {
                 console.log("Server Error")
             })
-
     }
 
 }

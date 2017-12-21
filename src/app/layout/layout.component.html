@@ -16,12 +16,13 @@
     <nav class="subnav" [clr-nav-level]="1">
         <ul class="nav">
             <clr-dropdown *ngFor="let MGrp of getMenuGrp">
-                <button class="nav-link active" clrDropdownTrigger>
-                    <clr-icon shape="flask" class="is-solid"></clr-icon> {{MGrp.menu_name}}
+                <button class="nav-link active" clrDropdownTrigger (click)="ShowMenu(MGrp.menu_id)">
+                    <!-- <input hidden='true' class="text" type="text" [(ngModel)]="menu_id" name="menu_id" placeholder="MGrp.menu_id"> -->
+                    <clr-icon shape="flask" class="is-solid"></clr-icon> {{MGrp.menu_id}}:{{MGrp.menu_name}}
                 </button>
                 <clr-dropdown-menu *clrIfOpen>
                     <li class="nav-item" *ngFor="let MTyp of getMenuTyp">
-                        <a class="nav-link" href="#" [routerLink]="['./MGrp.menu_name']" routerLinkActive="active" clrDropdownItem>
+                        <a class="nav-link" href="#" [routerLink]="['./',MGrp.rout]" routerLinkActive="active" clrDropdownItem>
                             <clr-icon shape="bar-chart" class="is-solid"></clr-icon> {{MTyp.item_name}}</a>
                     </li>
                 </clr-dropdown-menu>

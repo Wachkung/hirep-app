@@ -15,13 +15,15 @@ import { LayoutComponent } from './layout/layout.component';
 
 
 import { MenuGrpService } from './common-services/menugrp.service';
+import { DtrComponent } from './dtr/dtr.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         AboutComponent,
         HomeComponent,
-        LayoutComponent
+        LayoutComponent,
+        DtrComponent
     ],
     imports: [
         BrowserAnimationsModule,
