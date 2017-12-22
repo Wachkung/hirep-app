@@ -14,8 +14,6 @@ export class LayoutComponent implements OnInit {
     var_menu_id: any;
     constructor(
         private menuGrpService: MenuGrpService,
-
-
     ) { }
 
     ngOnInit() {
@@ -28,11 +26,7 @@ export class LayoutComponent implements OnInit {
             .then((rows: any) => {
                 if (rows.ok) {
                     this.getMenuGrp = rows.rows;
-                    // rows.length;
-                    console.log(this.getMenuGrp);
-                    // console.log(this.getMenuGrp[4].menu_id);
-
-
+                    // console.log(this.getMenuGrp);
                 } else {
                     console.log(JSON.stringify(rows.error));
                 }
@@ -43,13 +37,13 @@ export class LayoutComponent implements OnInit {
     }
     ShowMenu(menu_id) {
         this.menu_id = menu_id;
-        console.log(this.menu_id);
+        // console.log(this.menu_id);
         this.getMenuTyp = [];
         this.menuGrpService.getMenuItem(this.menu_id)
             .then((rows: any) => {
                 if (rows.ok) {
                     this.getMenuTyp = rows.rows;
-                    console.log(this.getMenuTyp);
+                    // console.log(this.getMenuTyp);
                 } else {
                     console.log(JSON.stringify(rows.error));
                 }

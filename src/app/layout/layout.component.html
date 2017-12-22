@@ -22,7 +22,7 @@
                 </button>
                 <clr-dropdown-menu *clrIfOpen>
                     <li class="nav-item" *ngFor="let MTyp of getMenuTyp">
-                        <a class="nav-link" href="#" [routerLink]="['./',MGrp.rout]" routerLinkActive="active" clrDropdownItem>
+                        <a class="nav-link" href="#" [routerLink]="['./view']" routerLinkActive="active" clrDropdownItem>
                             <clr-icon shape="bar-chart" class="is-solid"></clr-icon> {{MTyp.item_name}}</a>
                     </li>
                 </clr-dropdown-menu>

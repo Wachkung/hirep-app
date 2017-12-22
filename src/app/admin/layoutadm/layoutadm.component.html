@@ -15,10 +15,11 @@
 
     <nav class="subnav" [clr-nav-level]="1">
         <ul class="nav">
-            <clr-dropdown *ngFor="let MGrp of getMenuGrp">
-                <li class="nav-item" *ngFor="let MTyp of getMenuTyp">
+            <clr-dropdown>
+                <li class="nav-item">
                     <a class="nav-link" href="#" [routerLink]="['./home']" routerLinkActive="active" clrDropdownItem>
-                        <clr-icon shape="bar-chart" class="is-solid"></clr-icon> Home</a>
+                        <clr-icon shape="bar-chart" class="is-solid"></clr-icon> Home
+                    </a>
                 </li>
 
             </clr-dropdown>

@@ -16,8 +16,8 @@ import { LayoutComponent } from './layout/layout.component';
 import { AdminModule } from './admin/admin.module';
 
 import { MenuGrpService } from './common-services/menugrp.service';
-import { DtrComponent } from './dtr/dtr.component';
 import { LoginComponent } from './login/login.component';
+import { ViewComponent } from './view/view.component';
 
 @NgModule({
     declarations: [
@@ -25,8 +25,8 @@ import { LoginComponent } from './login/login.component';
         AboutComponent,
         HomeComponent,
         LayoutComponent,
-        DtrComponent,
-        LoginComponent
+        LoginComponent,
+        ViewComponent
     ],
     imports: [
         BrowserAnimationsModule,

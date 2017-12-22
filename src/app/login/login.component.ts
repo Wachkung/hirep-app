@@ -40,7 +40,8 @@ export class LoginComponent implements OnInit {
             .then((result: any) => {
                 if (result.ok) {
                     this.users = result.rows; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
-                    console.log(this.users);
+                    localStorage.setItem('login', result.rows); // เก็บค่า Token ไว้ที่เครื่อง Client ไว้
+                    // console.log(this.users);
                     this.router.navigate(['admin']);
                 }
             }).catch(error => {
