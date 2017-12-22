@@ -9,6 +9,7 @@ import { CommonModule } from '@angular/common';
 import { AdminRoutingModule } from './admin-routing.module';
 import { HomeComponent } from './home/home.component';
 import { LayoutadmComponent } from './layoutadm/layoutadm.component';
+import { MenuitemComponent } from './menuitem/menuitem.component';
 
 @NgModule({
     imports: [
@@ -20,6 +21,6 @@ import { LayoutadmComponent } from './layoutadm/layoutadm.component';
         CommonModule,
         AdminRoutingModule
     ],
-    declarations: [HomeComponent, LayoutadmComponent]
+    declarations: [HomeComponent, LayoutadmComponent, MenuitemComponent]
 })
 export class AdminModule { }
