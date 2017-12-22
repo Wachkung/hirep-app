@@ -14,9 +14,10 @@ export class LayoutadmComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        this.Login()
+        this.logLogin()
     }
-    Login() {
+
+    logLogin() {
         if (localStorage.login != null) {
             console.log('login Success!');
             this.user = localStorage.token;
@@ -24,11 +25,17 @@ export class LayoutadmComponent implements OnInit {
             console.log(this.user);
 
         } else {
-            this.router.navigate(['./hirep/login']); // ส่ง Routes ไป client/home
+            this.router.navigate(['/hirep/home']); // ส่ง Routes ไป client/home
             // console.log('No Token Success!');
         }
 
     }
 
+    logLoOut() {
+        console.log('logout Success!');
+        localStorage.removeItem('token');
+        this.router.navigate(['/hirep/home']); // ส่ง Routes ไป client/home
+
+    }
 
 }
