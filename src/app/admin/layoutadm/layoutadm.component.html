@@ -7,9 +7,12 @@
             </a>
         </div>
         <div class="header-actions">
-            <a href="#" routerLinkActive="active" class="nav-link nav-icon">
-                <!-- LOGIN <clr-icon shape="login"></clr-icon> -->LOGOUT
-            </a>
+            <clr-dropdown>
+                <a href="#" (click)="logLoOut()" routerLinkActive="active" class="nav-link nav-icon">
+                    <!-- LOGIN <clr-icon shape="login"></clr-icon> -->LOGOUT
+                </a>
+            </clr-dropdown>
+
         </div>
     </clr-header>
 
