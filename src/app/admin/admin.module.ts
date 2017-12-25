@@ -10,6 +10,8 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { HomeComponent } from './home/home.component';
 import { LayoutadmComponent } from './layoutadm/layoutadm.component';
 import { MenuitemComponent } from './menuitem/menuitem.component';
+import {MenuitemService} from '../admin/common-services/menuitem.service';
+
 
 @NgModule({
     imports: [
@@ -21,6 +23,10 @@ import { MenuitemComponent } from './menuitem/menuitem.component';
         CommonModule,
         AdminRoutingModule
     ],
-    declarations: [HomeComponent, LayoutadmComponent, MenuitemComponent]
+    declarations: [HomeComponent, LayoutadmComponent, MenuitemComponent],
+    providers: [
+        MenuitemService,
+
+    ],
 })
 export class AdminModule { }

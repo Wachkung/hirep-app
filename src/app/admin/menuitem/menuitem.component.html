@@ -1,15 +1,52 @@
-<clr-datagrid>
-  <clr-dg-column>User ID</clr-dg-column>
-  <clr-dg-column>Name</clr-dg-column>
-  <clr-dg-column>Creation date</clr-dg-column>
-  <clr-dg-column>Favorite color</clr-dg-column>
 
-  <clr-dg-row *ngFor="let user of users">
-      <clr-dg-cell>{{user.id}}</clr-dg-cell>
-      <clr-dg-cell>{{user.name}}</clr-dg-cell>
-      <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
-      <clr-dg-cell>{{user.color}}</clr-dg-cell>
+<button class="btn btn-primary" (click)="open = true">เพิ่มข้อมูล</button>
+
+<clr-datagrid>
+  <clr-dg-column>ลำดับ</clr-dg-column>
+  <clr-dg-column>ชื่อ เมนู</clr-dg-column>
+   <clr-dg-column>สถานะ</clr-dg-column>
+   
+  <clr-dg-row *ngFor="let x of allmenuitem">
+      <clr-dg-cell>{{x.item_id}}</clr-dg-cell>
+      <clr-dg-cell>{{x.item_name}}</clr-dg-cell>
+      <clr-dg-cell>{{x.item_status}}</clr-dg-cell>
+       
+     
   </clr-dg-row>
 
-  <clr-dg-footer>{{users.length}} users</clr-dg-footer>
+  <clr-dg-footer>{{allmenuitem.length}} เมนู</clr-dg-footer>
 </clr-datagrid>
+
+
+
+<clr-modal [(clrModalOpen)]="open">
+  <h3 class="modal-title">หน่วยงาน</h3>
+  <div class="modal-body">
+    <form>
+      <section class="form-block">
+          <label>หน่วยงาน</label>
+          <div class="form-group">
+              <label for="aForm_1">ลำดับ</label>
+              <input type="text" name="varmenu_id" [(ngModel)]="varmenu_id" placeholder="Enter value here" size="45">
+          </div>
+          <div class="form-group">
+              <label for="aForm_2">ชื่อหน่วยงาน</label>
+              <input type="text" name="varitem_name" [(ngModel)]="varitem_name" size="35">
+          </div>
+          <div class="form-group">
+              <label for="aForm_3">comment</label>
+              <input type="text" name="varcomment" [(ngModel)]="varcomment" size="35">
+          </div>
+          <div class="form-group">
+              <label for="aForm_4">สถานะ</label>
+              <input type="text" name="varitem_status" [(ngModel)]="varitem_status" size="35">
+          </div>
+         
+      </section>
+  </form>
+  </div>
+  <div class="modal-footer">
+      <button type="button" class="btn btn-outline" (click)="basic = false">Cancel</button>
+      <button type="button" class="btn btn-primary" (click)="addData()">Ok</button>
+  </div>
+</clr-modal>
