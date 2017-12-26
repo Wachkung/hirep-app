@@ -7,7 +7,16 @@
    <clr-dg-column>สถานะ</clr-dg-column>
    
   <clr-dg-row *ngFor="let x of allmenuitem">
-      <clr-dg-cell>{{x.item_id}}</clr-dg-cell>
+      
+    
+    
+    
+    <clr-dg-action-overflow>
+      
+            <button class="btn btn-primary" (click)="editData(x)">แก้ไขข้อมูล</button>
+            <button class="btn btn-success"(click)="delete(x)">ลบข้อมูล</button>
+          </clr-dg-action-overflow>
+    <clr-dg-cell>{{x.item_id}}</clr-dg-cell>
       <clr-dg-cell>{{x.item_name}}</clr-dg-cell>
       <clr-dg-cell>{{x.item_status}}</clr-dg-cell>
        
@@ -46,7 +55,7 @@
   </form>
   </div>
   <div class="modal-footer">
-      <button type="button" class="btn btn-outline" (click)="basic = false">Cancel</button>
-      <button type="button" class="btn btn-primary" (click)="addData()">Ok</button>
+      <button type="button" class="btn btn-outline" (click)="open = false">Cancel</button>
+      <button type="button" class="btn btn-primary" (click)="save()">Ok</button>
   </div>
 </clr-modal>
