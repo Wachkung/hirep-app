@@ -12,7 +12,8 @@ const routes: Routes = [
         children: [
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
-            { path: 'menuitem', component: MenuitemComponent }
+            { path: 'menuitem', component: MenuitemComponent } 
+            
         ]
     }
     
