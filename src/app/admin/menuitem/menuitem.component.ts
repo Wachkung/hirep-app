@@ -30,6 +30,13 @@ export class MenuitemComponent implements OnInit {
         this.showAllMenuitem();
         this.showAllMenu();
     }
+    Open() {
+        this.open = true;
+        this.varmenu_id = null;
+        this.varitem_name = null;
+        this.varcomment = null;
+        this.varitem_status = null;
+    }
 
     showAllMenu() {
         // cler ค่า
