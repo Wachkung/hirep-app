@@ -3,7 +3,7 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class MenuService {
+export class UserService {
 
     constructor(
         @Inject('API_URL')
@@ -11,10 +11,10 @@ export class MenuService {
         private http: Http
     ) { }
 
-    getAllMenu() {
+    getAllUsers() {
         return new Promise((resolve, reject) => {
             // route ดูที่ API
-            this.http.get(`${this.url}/menu`)
+            this.http.get(`${this.url}/users`)
                 .map(res => res.json())
                 .subscribe(data => {
                     resolve(data);
@@ -24,13 +24,13 @@ export class MenuService {
         })
     }
 
-    addMenu(menu_name: any, description: any, status: any, rout: any) {
+    addUsers(fullname: any, username: any, password: any, is_accept: any) {
         return new Promise((resolve, reject) => {
-            this.http.post(`${this.url}/menu`, {
-                menu_name: menu_name,
-                description: description,
-                rout: rout,
-                status: status
+            this.http.post(`${this.url}/users`, {
+                fullname: fullname,
+                username: username,
+                password: password,
+                is_accept: is_accept
 
             })
                 .map(res => res.json())
@@ -42,14 +42,14 @@ export class MenuService {
         })
     }
 
-    updateMenu(menu_id: any, menu_name: any, description: any, status: any, rout: any) {
+    updateUsers(id_user: any, fullname: any, username: any, password: any, is_accept: any) {
         return new Promise((resolve, reject) => {
-            this.http.put(`${this.url}/menu`, {
-                menu_id: menu_id,
-                menu_name: menu_name,
-                description: description,
-                status: status,
-                rout: rout
+            this.http.put(`${this.url}/users`, {
+                id_user: id_user,
+                fullname: fullname,
+                username: username,
+                password: password,
+                is_accept: is_accept
             })
                 .map(res => res.json())
                 .subscribe(data => {
@@ -59,9 +59,9 @@ export class MenuService {
                 })
         })
     }
-    remove(menu_id: any) {
+    remove(id_user: any) {
         return new Promise((resolve, reject) => {
-            this.http.post(`${this.url}/menu/del`, { menu_id: menu_id })
+            this.http.post(`${this.url}/users/del`, { id_user: id_user })
                 .map(res => res.json())
                 .subscribe(data => {
                     resolve(data);

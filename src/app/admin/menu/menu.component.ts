@@ -1,44 +1,44 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../common-services/user.service';
+import { MenuService } from '../common-services/menu.service';
 
 @Component({
-    selector: 'app-home',
-    templateUrl: './home.component.html',
-    styleUrls: ['./home.component.scss']
+    selector: 'app-menu',
+    templateUrl: './menu.component.html',
+    styleUrls: ['./menu.component.scss']
 })
-export class HomeComponent implements OnInit {
-    allUser: any = [];
-    id_user: any;
-    fullname: any;
-    username: any;
-    password: any;
-    is_accept: any;
+export class MenuComponent implements OnInit {
+    allmenu: any = [];
+    menu_id: any;
+    menu_name: any;
+    description: any;
+    rout: any;
+    status: any;
     open: boolean = false;
     isUpdate: boolean = false;
 
     constructor(
-        private userService: UserService
-
+        private menuservice: MenuService
     ) { }
 
     ngOnInit() {
-        this.showAllUsers();
+        this.showAllMenu();
+
     }
     Open() {
         this.open = true;
-        this.fullname = null;
-        this.username = null;
-        this.password = null;
-        this.is_accept = null;
+        this.menu_name = null;
+        this.description = null;
+        this.rout = null;
+        this.status = null;
 
     }
-    showAllUsers() {
-        this.allUser = [];
-        this.userService.getAllUsers()
+    showAllMenu() {
+        this.allmenu = [];
+        this.menuservice.getAllMenu()
             .then((result: any) => {
                 if (result.ok) {
-                    this.allUser = result.rows;
-                    console.log(this.allUser);
+                    this.allmenu = result.rows;
+                    console.log(this.allmenu);
                 } else {
                     console.log(JSON.stringify(result.error));
                 }
@@ -49,17 +49,17 @@ export class HomeComponent implements OnInit {
 
     }
     addData() {
-        if (this.fullname && this.username && this.password) {
-            this.userService.addUsers(this.fullname, this.username, this.password, this.is_accept)
+        if (this.menu_name && this.description) {
+            this.menuservice.addMenu(this.menu_name, this.description, this.status, this.rout)
                 .then((results: any) => {
                     if (results.ok) {
                         console.log("เพิ่มข้อมูลสำเร็จ");
-                        this.showAllUsers();
+                        this.showAllMenu();
                         this.open = false;
-                        this.fullname = null;
-                        this.username = null;
-                        this.password = null;
-                        this.is_accept = null;
+                        this.menu_name = null;
+                        this.description = null;
+                        this.rout = null;
+                        this.status = null;
                     } else {
                         console.log("เพิ่มข้อมูลไม่สำเร็จ");
                     }
@@ -73,29 +73,29 @@ export class HomeComponent implements OnInit {
     }
     editData(x) {
         console.log(x);
-        this.id_user = x.id_user;
-        this.fullname = x.fullname;
-        this.username = x.username;
-        this.password = x.password;
-        this.is_accept = x.is_accept;
+        this.menu_id = x.menu_id;
+        this.menu_name = x.menu_name;
+        this.description = x.description;
+        this.rout = x.rout;
+        this.status = x.status;
         this.isUpdate = true;
         this.open = true;
     }
     updateData() {
         // console.log(this.vardchtype);
         // console.log(this.vardchtypename);
-        if (this.id_user && this.fullname && this.username && this.password && this.is_accept) {
-            this.userService.updateUsers(this.id_user, this.fullname, this.username, this.password, this.is_accept)
+        if (this.menu_id && this.menu_name && this.description && this.rout && this.status) {
+            this.menuservice.updateMenu(this.menu_id, this.menu_name, this.description, this.status, this.rout)
                 .then((results: any) => {
                     if (results.ok) {
                         console.log("แก้ไขข้อมูลเรียบร้อย");
-                        this.showAllUsers();
+                        this.showAllMenu();
                         this.open = false;
-                        this.id_user = null;
-                        this.fullname = null;
-                        this.username = null;
-                        this.password = null;
-                        this.is_accept = null;
+                        this.menu_id = null;
+                        this.menu_name = null;
+                        this.description = null;
+                        this.rout = null;
+                        this.status = null;
 
 
 
@@ -122,10 +122,10 @@ export class HomeComponent implements OnInit {
     delete(x) {
 
         console.log(x);
-        this.userService.remove(x.id_user)
+        this.menuservice.remove(x.menu_id)
             .then((results: any) => {
                 if (results.ok) {
-                    this.showAllUsers();
+                    this.showAllMenu();
                 } else {
                     console.log(results.error);
                 }
@@ -133,7 +133,6 @@ export class HomeComponent implements OnInit {
                 console.log("SERVER ERROR");
             })
     }
-
 
 
 }

@@ -12,7 +12,8 @@ import { LayoutadmComponent } from './layoutadm/layoutadm.component';
 import { MenuitemComponent } from './menuitem/menuitem.component';
 import { MenuitemService } from '../admin/common-services/menuitem.service';
 import { MenuService } from '../admin/common-services/menu.service';
-
+import { MenuComponent } from './menu/menu.component';
+import { UserService } from './common-services/user.service';
 
 @NgModule({
     imports: [
@@ -24,10 +25,11 @@ import { MenuService } from '../admin/common-services/menu.service';
         CommonModule,
         AdminRoutingModule
     ],
-    declarations: [HomeComponent, LayoutadmComponent, MenuitemComponent],
+    declarations: [HomeComponent, LayoutadmComponent, MenuitemComponent, MenuComponent],
     providers: [
         MenuitemService,
         MenuService,
+        UserService
 
     ],
 })
