@@ -19,7 +19,7 @@ import { MenuGrpService } from './common-services/menugrp.service';
 import { LoginComponent } from './login/login.component';
 import { ViewComponent } from './view/view.component';
 import {MenuitemService}  from './admin/common-services/menuitem.service';
-
+ 
 @NgModule({
     declarations: [
         AppComponent,
@@ -42,6 +42,7 @@ import {MenuitemService}  from './admin/common-services/menuitem.service';
         { provide: 'API_URL', useValue: environment.apiUrl },
         MenuGrpService,
         MenuitemService,
+       
 
     ],
     bootstrap: [AppComponent]

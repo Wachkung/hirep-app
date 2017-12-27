@@ -4,6 +4,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { LayoutadmComponent } from './layoutadm/layoutadm.component';
 import {MenuitemComponent} from './menuitem/menuitem.component';
+import { HosInfoComponent } from 'app/admin/hos-info/hos-info.component';
+ 
 const routes: Routes = [
     // { path: '', redirectTo: 'admin/home', pathMatch: 'full' }, // กำหมด Path ให้วิง ไปที่ client/Home
     {
@@ -12,8 +14,8 @@ const routes: Routes = [
         children: [
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
-            { path: 'menuitem', component: MenuitemComponent } 
-            
+            { path: 'menuitem', component: MenuitemComponent }  ,
+            { path: 'setup', component: HosInfoComponent } 
         ]
     }
     

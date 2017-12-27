@@ -1,0 +1,29 @@
+ 
+
+
+
+<clr-datagrid>
+  <clr-dg-column>
+    <ng-container *clrDgHideableColumn="{hidden:false}">
+      ลำดับ
+    </ng-container>
+  </clr-dg-column>
+  <clr-dg-column [clrDgField]="'data'">ชื่อ</clr-dg-column>
+  <clr-dg-column>ชนิด</clr-dg-column>
+
+
+  <clr-dg-row *clrDgItems="let x of allhosinfo">
+  
+     
+
+    <clr-dg-cell>{{x.header}}</clr-dg-cell>
+    <clr-dg-cell>{{x.data}}</clr-dg-cell>
+    <clr-dg-cell>{{x.comment}}</clr-dg-cell>
+
+  </clr-dg-row>
+
+  <clr-dg-footer>{{allhosinfo.length}} รายการ</clr-dg-footer>
+</clr-datagrid>
+
+
+ 

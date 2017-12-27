@@ -11,7 +11,9 @@ import { HomeComponent } from './home/home.component';
 import { LayoutadmComponent } from './layoutadm/layoutadm.component';
 import { MenuitemComponent } from './menuitem/menuitem.component';
 import {MenuitemService} from '../admin/common-services/menuitem.service';
-
+import { HosInfoComponent } from './hos-info/hos-info.component';
+import{HosInfoService} from '../admin/common-services/hos-info.service'
+ 
 
 @NgModule({
     imports: [
@@ -23,9 +25,9 @@ import {MenuitemService} from '../admin/common-services/menuitem.service';
         CommonModule,
         AdminRoutingModule
     ],
-    declarations: [HomeComponent, LayoutadmComponent, MenuitemComponent],
+    declarations: [HomeComponent, LayoutadmComponent, MenuitemComponent, HosInfoComponent],
     providers: [
-        MenuitemService,
+        MenuitemService ,HosInfoService
 
     ],
 })
