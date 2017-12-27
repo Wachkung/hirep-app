@@ -18,7 +18,7 @@ import { AdminModule } from './admin/admin.module';
 import { MenuGrpService } from './common-services/menugrp.service';
 import { LoginComponent } from './login/login.component';
 import { ViewComponent } from './view/view.component';
-import {MenuitemService}  from './admin/common-services/menuitem.service';
+import { MenuitemService } from './admin/common-services/menuitem.service';
 
 @NgModule({
     declarations: [
