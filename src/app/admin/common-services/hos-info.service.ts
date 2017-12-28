@@ -23,6 +23,55 @@ export class HosInfoService {
   }
 
 
+  addHosinfo(varheader:any,vardata:any,varcomment) {
+    return new Promise((resolve, reject) => {
+      this.http.post(`${this.url}/setup`,{
+        header :varheader,
+        data:vardata,
+        comment:varcomment
+        
+      })
+        .map(res => res.json())
+        .subscribe(data => {
+          resolve(data);
+        }, error => {
+          reject(error);
+        })
+    })
+  }
+
+
+  updateHosinfo(var_id:any,varheader:any,vardata:any,varcomment) {
+    return new Promise((resolve, reject) => {
+      this.http.put(`${this.url}/setup`,{
+        id :var_id,
+        header:varheader,
+        data:vardata,
+        comment:varcomment
+        
+      })
+        .map(res => res.json())
+        .subscribe(data => {
+          resolve(data);
+        }, error => {
+          reject(error);
+        })
+    })
+  }
+  remove(var_id:any) {
+    return new Promise((resolve, reject) => {
+      
+      this.http.post(`${this.url}/setup/del`,{id:var_id})
+
+
+        .map(res => res.json())
+        .subscribe(data => {
+          resolve(data);
+        }, error => {
+          reject(error);
+        })
+    })
+  }
 
 
 

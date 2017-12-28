@@ -1,20 +1,29 @@
  
 
+<span class="label label-info"> Hospital_info</span>
+
+<button class="btn btn-primary" (click)="open = true">เพิ่มข้อมูล</button>
+
 
 
 <clr-datagrid>
   <clr-dg-column>
     <ng-container *clrDgHideableColumn="{hidden:false}">
-      ลำดับ
+      หัวข้อ
     </ng-container>
   </clr-dg-column>
-  <clr-dg-column [clrDgField]="'data'">ชื่อ</clr-dg-column>
-  <clr-dg-column>ชนิด</clr-dg-column>
+  <clr-dg-column [clrDgField]="'data'">ข้อมูล</clr-dg-column>
+  <clr-dg-column>รายละเอียด</clr-dg-column>
 
 
   <clr-dg-row *clrDgItems="let x of allhosinfo">
   
-     
+    <clr-dg-action-overflow>
+      
+            <button class="btn btn-primary" (click)="editData(x)">แก้ไขข้อมูล</button>
+            <button class="btn btn-success"(click)="delete(x)">ลบข้อมูล</button>
+          </clr-dg-action-overflow>
+      
 
     <clr-dg-cell>{{x.header}}</clr-dg-cell>
     <clr-dg-cell>{{x.data}}</clr-dg-cell>
@@ -27,3 +36,31 @@
 
 
  
+
+<clr-modal [(clrModalOpen)]="open">
+  <h3 class="modal-title">การตั้งค่าระบบ</h3>
+  <div class="modal-body">
+    <form>
+      <section class="form-block">
+        <label>การตั้งค่าระบบ</label>
+        <div class="form-group">
+          <label for="aForm_1">หัวข้อ</label>
+          <input type="text" name="varheader" [(ngModel)]="varheader" placeholder="Enter value here" size="45">
+        </div>
+        <div class="form-group">
+          <label for="aForm_2">ข้อมูล</label>
+          <input type="text" name="vardata" [(ngModel)] = "vardata" placeholder="Enter another value here" size="35">
+        </div>
+        <div class="form-group">
+          <label for="aForm_2">รายละเอียด</label>
+          <input type="text" name="varcomment" [(ngModel)] = "varcomment" placeholder="Enter another value here" size="35">
+        </div>
+
+      </section>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline" (click)="open = false">ยกเลิก</button>
+    <button type="button" class="btn btn-primary" (click)="save()">ตกลง</button>
+  </div>
+</clr-modal>
