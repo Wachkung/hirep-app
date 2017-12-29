@@ -1,47 +1,39 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuitemService } from '../common-services/menuitem.service';
 import { MenuService } from '../common-services/menu.service';
-@Component({
-    selector: 'app-menuitem',
-    templateUrl: './menuitem.component.html',
-    styleUrls: ['./menuitem.component.scss']
-})
-export class MenuitemComponent implements OnInit {
-    allmenuitem: any = [];
-    allmenu: any = [];
-    varmenu_id: any;
-    varitem_name: any;
-    varcomment: any;
-    varitem_status: any;
-    open: boolean = false;
-    varitem_id: any;
-    isUpdate: boolean = false;
-    // vardeleteitem_id:any;
 
+@Component({
+    selector: 'app-menu',
+    templateUrl: './menu.component.html',
+    styleUrls: ['./menu.component.scss']
+})
+export class MenuComponent implements OnInit {
+    allmenu: any = [];
+    menu_id: any;
+    menu_name: any;
+    description: any;
+    rout: any;
+    status: any;
+    open: boolean = false;
+    isUpdate: boolean = false;
 
     constructor(
-        private menuitemservice: MenuitemService,
         private menuservice: MenuService
-
     ) { }
 
     ngOnInit() {
-
-        this.showAllMenuitem();
         this.showAllMenu();
+
     }
     Open() {
         this.open = true;
-        this.varmenu_id = null;
-        this.varitem_name = null;
-        this.varcomment = null;
-        this.varitem_status = null;
+        this.menu_name = null;
+        this.description = null;
+        this.rout = null;
+        this.status = null;
+
     }
-
     showAllMenu() {
-        // cler ค่า
         this.allmenu = [];
-
         this.menuservice.getAllMenu()
             .then((result: any) => {
                 if (result.ok) {
@@ -56,41 +48,18 @@ export class MenuitemComponent implements OnInit {
             })
 
     }
-
-    showAllMenuitem() {
-        // cler ค่า
-        this.allmenuitem = [];
-
-        this.menuitemservice.getAllMenuitem()
-            .then((result: any) => {
-                if (result.ok) {
-                    this.allmenuitem = result.rows;
-                    console.log(this.allmenuitem);
-                } else {
-                    console.log(JSON.stringify(result.error));
-                }
-            })
-            .catch(() => {
-                console.log("Server Error");
-            })
-
-    }
     addData() {
-        // console.log(this.varitem_name);
-        // console.log(this.varcomment);
-        // console.log(this.varitem_status);
-
-        if (this.varmenu_id && this.varitem_name) {
-            this.menuitemservice.addMenuitem(this.varmenu_id, this.varitem_name, this.varcomment, this.varitem_status)
+        if (this.menu_name && this.description) {
+            this.menuservice.addMenu(this.menu_name, this.description, this.status, this.rout)
                 .then((results: any) => {
                     if (results.ok) {
                         console.log("เพิ่มข้อมูลสำเร็จ");
-                        this.showAllMenuitem();
+                        this.showAllMenu();
                         this.open = false;
-                        this.varmenu_id = null;
-                        this.varitem_name = null;
-                        this.varcomment = null;
-                        this.varitem_status = null;
+                        this.menu_name = null;
+                        this.description = null;
+                        this.rout = null;
+                        this.status = null;
                     } else {
                         console.log("เพิ่มข้อมูลไม่สำเร็จ");
                     }
@@ -104,28 +73,29 @@ export class MenuitemComponent implements OnInit {
     }
     editData(x) {
         console.log(x);
-        this.varitem_id = x.item_id;
-        this.varmenu_id = x.menu_id;
-        this.varitem_name = x.item_name;
-        this.varcomment = x.comment;
-        this.varitem_status = x.item_status;
+        this.menu_id = x.menu_id;
+        this.menu_name = x.menu_name;
+        this.description = x.description;
+        this.rout = x.rout;
+        this.status = x.status;
         this.isUpdate = true;
         this.open = true;
     }
     updateData() {
         // console.log(this.vardchtype);
         // console.log(this.vardchtypename);
-        if (this.varitem_id && this.varmenu_id && this.varitem_name && this.varcomment && this.varitem_status) {
-            this.menuitemservice.updateMenuitem(this.varitem_id, this.varmenu_id, this.varitem_name, this.varcomment, this.varitem_status)
+        if (this.menu_id && this.menu_name && this.description && this.rout && this.status) {
+            this.menuservice.updateMenu(this.menu_id, this.menu_name, this.description, this.status, this.rout)
                 .then((results: any) => {
                     if (results.ok) {
                         console.log("แก้ไขข้อมูลเรียบร้อย");
-                        this.showAllMenuitem();
+                        this.showAllMenu();
                         this.open = false;
-                        this.varmenu_id = null;
-                        this.varitem_name = null;
-                        this.varcomment = null;
-                        this.varitem_status = null;
+                        this.menu_id = null;
+                        this.menu_name = null;
+                        this.description = null;
+                        this.rout = null;
+                        this.status = null;
 
 
 
@@ -152,10 +122,10 @@ export class MenuitemComponent implements OnInit {
     delete(x) {
 
         console.log(x);
-        this.menuitemservice.remove(x.item_id)
+        this.menuservice.remove(x.menu_id)
             .then((results: any) => {
                 if (results.ok) {
-                    this.showAllMenuitem();
+                    this.showAllMenu();
                 } else {
                     console.log(results.error);
                 }
@@ -163,4 +133,6 @@ export class MenuitemComponent implements OnInit {
                 console.log("SERVER ERROR");
             })
     }
+
+
 }

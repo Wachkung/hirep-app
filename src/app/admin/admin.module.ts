@@ -5,15 +5,23 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { ClarityModule } from '@clr/angular';
 import { CommonModule } from '@angular/common';
-
 import { AdminRoutingModule } from './admin-routing.module';
+
+
 import { HomeComponent } from './home/home.component';
 import { LayoutadmComponent } from './layoutadm/layoutadm.component';
 import { MenuitemComponent } from './menuitem/menuitem.component';
-import {MenuitemService} from '../admin/common-services/menuitem.service';
-import { HosInfoComponent } from './hos-info/hos-info.component';
-import{HosInfoService} from '../admin/common-services/hos-info.service'
- 
+import { MenuComponent } from './menu/menu.component';
+
+
+import { MenuitemService } from '../admin/common-services/menuitem.service';
+import { MenuService } from '../admin/common-services/menu.service';
+import { UserService } from './common-services/user.service';
+import { MenuSubService } from './common-services/menusub.service';
+import { SubitemComponent } from './subitem/subitem.component';
+import{HosInfoComponent}  from './hos-info/hos-info.component';
+import {HosInfoService} from './common-services/hos-info.service';
+
 
 @NgModule({
     imports: [
@@ -25,10 +33,13 @@ import{HosInfoService} from '../admin/common-services/hos-info.service'
         CommonModule,
         AdminRoutingModule
     ],
-    declarations: [HomeComponent, LayoutadmComponent, MenuitemComponent, HosInfoComponent],
+    declarations: [HomeComponent, LayoutadmComponent, MenuitemComponent, MenuComponent, SubitemComponent,HosInfoComponent],
     providers: [
-        MenuitemService ,HosInfoService
-
+        MenuitemService,
+        MenuService,
+        UserService,
+        MenuSubService,
+        HosInfoService
     ],
 })
 export class AdminModule { }

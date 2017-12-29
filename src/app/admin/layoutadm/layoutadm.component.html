@@ -12,7 +12,6 @@
                     <!-- LOGIN <clr-icon shape="login"></clr-icon> -->LOGOUT
                 </a>
             </clr-dropdown>
-
         </div>
     </clr-header>
 
@@ -24,7 +23,13 @@
                         <clr-icon shape="bar-chart" class="is-solid"></clr-icon> Home
                     </a>
                 </li>
-
+            </clr-dropdown>
+            <clr-dropdown>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" [routerLink]="['./menu']" routerLinkActive="active" clrDropdownItem>
+                        <clr-icon shape="bar-chart" class="is-solid"></clr-icon> Menu
+                    </a>
+                </li>
             </clr-dropdown>
             <clr-dropdown>
                 <li class="nav-item">
@@ -32,7 +37,6 @@
                         <clr-icon shape="bar-chart" class="is-solid"></clr-icon> MenuItem
                     </a>
                 </li>
-
             </clr-dropdown>
             <clr-dropdown>
                 <li class="nav-item">
@@ -40,10 +44,19 @@
                         <clr-icon shape="bar-chart" class="is-solid"></clr-icon> MenuSetup
                     </a>
                 </li>
-
             </clr-dropdown>
 
 
+            <clr-dropdown>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" [routerLink]="['./submenu']" routerLinkActive="active" clrDropdownItem>
+                        <clr-icon shape="bar-chart" class="is-solid"></clr-icon> MenuSubItem
+                    </a>
+                </li>
+            </clr-dropdown>
+
+
+            
         </ul>
     </nav>
 

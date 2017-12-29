@@ -4,43 +4,43 @@
     <clr-dg-column>ลำดับ</clr-dg-column>
     <clr-dg-column>ชื่อเมนู</clr-dg-column>
     <clr-dg-column>สถานะ</clr-dg-column>
-    <clr-dg-row *ngFor="let x of allUser">
+    <clr-dg-row *ngFor="let x of allmenu">
         <clr-dg-action-overflow>
             <button class="btn btn-primary" (click)="editData(x)">แก้ไขข้อมูล</button>
             <button class="btn btn-success" (click)="delete(x)">ลบข้อมูล</button>
         </clr-dg-action-overflow>
-        <clr-dg-cell>{{x.id_user}}</clr-dg-cell>
-        <clr-dg-cell>{{x.fullname}}</clr-dg-cell>
-        <clr-dg-cell>{{x.is_accept}}</clr-dg-cell>
+        <clr-dg-cell>{{x.menu_id}}</clr-dg-cell>
+        <clr-dg-cell>{{x.menu_name}}</clr-dg-cell>
+        <clr-dg-cell>{{x.status}}</clr-dg-cell>
     </clr-dg-row>
 
-    <clr-dg-footer>{{allUser.length}} User</clr-dg-footer>
+    <clr-dg-footer>{{allmenu.length}} เมนู</clr-dg-footer>
 </clr-datagrid>
 <clr-modal [(clrModalOpen)]="open">
-    <h3 class="modal-title">From Users Name </h3>
+    <h3 class="modal-title">From Menu </h3>
     <div class="modal-body">
         <form>
             <section class="form-block">
-                <label>Add/Edit Users</label>
+                <label>เพิ่ม/แก้ไข เมนูหลัก</label>
                 <div class="form-group">
-                    <label for="aForm_2">ชื่อ-สกุล</label>
-                    <input type="text" name="fullname" [(ngModel)]="fullname" size="35">
+                    <label for="aForm_2">ชื่อเมนูหลัก</label>
+                    <input type="text" name="menu_name" [(ngModel)]="menu_name" size="35">
                 </div>
                 <div class="form-group">
-                    <label for="aForm_3">Usernsme</label>
-                    <input type="text" name="username" [(ngModel)]="username" size="35">
+                    <label for="aForm_3">description</label>
+                    <input type="text" name="description" [(ngModel)]="description" size="35">
                 </div>
                 <div class="form-group">
-                    <label for="aForm_3">Password</label>
-                    <input type="text" name="password" [(ngModel)]="password" size="35">
+                    <label for="aForm_3">rout</label>
+                    <input type="text" name="rout" [(ngModel)]="rout" size="35">
                 </div>
                 <div class="form-group">
                     <label for="aForm_4">สถานะ</label>
                     <!-- <input type="text" name="varitem_status" [(ngModel)]="varitem_status" size="35"> -->
                     <div class="select">
-                        <select [(ngModel)]="is_accept" name="is_accept" id="is_accept">
-                            <option [value]="'Y'">เปิดการใช้งาน</option>
-                            <option [value]="'N'">ปิดการใช้งาน</option>
+                        <select [(ngModel)]="status" name="status" id="status">
+                            <option [value]="'0'">ปิดการใช้งาน</option>
+                            <option [value]="'1'">เปิดการใช้งาน</option>
                         </select>
                     </div>
                 </div>

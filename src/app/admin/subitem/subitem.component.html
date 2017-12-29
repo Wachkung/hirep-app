@@ -1,0 +1,79 @@
+<button class="btn btn-primary" (click)="Open()">เพิ่มข้อมูล</button>
+
+<clr-datagrid>
+    <clr-dg-column>ลำดับ</clr-dg-column>
+    <clr-dg-column>item_id</clr-dg-column>
+    <clr-dg-column>sub_item_name</clr-dg-column>
+    <clr-dg-column>query_sql</clr-dg-column>
+    <clr-dg-column>comment</clr-dg-column>
+    <clr-dg-row *ngFor="let x of allSubitem">
+        <clr-dg-action-overflow>
+            <button class="btn btn-primary" (click)="editData(x)">แก้ไขข้อมูล</button>
+            <button class="btn btn-success" (click)="delete(x)">ลบข้อมูล</button>
+        </clr-dg-action-overflow>
+        <clr-dg-cell>{{x.item_id}}</clr-dg-cell>
+        <clr-dg-cell>{{x.sub_item_name}}</clr-dg-cell>
+        <clr-dg-cell>{{x.query_sql}}</clr-dg-cell>
+        <clr-dg-cell>{{x.comment}}</clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-footer>{{allSubitem.length}} เมนู</clr-dg-footer>
+</clr-datagrid>
+<clr-modal [(clrModalOpen)]="open">
+    <h3 class="modal-title">From Menu Sub Item </h3>
+    <div class="modal-body">
+        <form>
+            <section class="form-block">
+                <label>เพิ่ม/แก้ไข SubItem</label>
+                <div class="form-group">
+                    <label for="aForm_1">MenuItem</label>
+                    <!-- <input type="text" name="varmenu_id" [(ngModel)]="varmenu_id" size="45"> -->
+                    <div class="select">
+                        <select [(ngModel)]="item_id" name="item_id" id="item_id">
+                            <option *ngFor="let m of allmenuitem" [value]="m.item_id">{{m.item_name}}</option>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label for="aForm_2">sub_item_name</label>
+                    <input type="text" name="sub_item_name" [(ngModel)]="sub_item_name" size="35">
+                </div>
+                <div class="form-group">
+                    <label for="aForm_3">query_sql</label>
+                    <!-- <input type="text" name="query_sql" [(ngModel)]="query_sql" size="35"> -->
+                    <textarea name="query_sql" [(ngModel)]="query_sql" id="query_sql" rows="5"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="aForm_4">query_params</label>
+                    <!-- <input type="text" name="query_params" [(ngModel)]="query_params" size="35"> -->
+                    <textarea name="query_params" [(ngModel)]="query_params" id="query_params" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="aForm_5">template</label>
+                    <!-- <input type="text" name="template" [(ngModel)]="template" size="35"> -->
+                    <textarea name="template" [(ngModel)]="template" id="template" rows="5"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="aForm_6">comment</label>
+                    <!-- <input type="text" name="comment" [(ngModel)]="comment" size="35"> -->
+                    <textarea name="comment" [(ngModel)]="comment" id="comment" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="aForm_7">สถานะ</label>
+                    <!-- <input type="text" name="varitem_status" [(ngModel)]="varitem_status" size="35"> -->
+                    <div class="select">
+                        <select [(ngModel)]="sub_item_status" name="sub_item_status" id="sub_item_status">
+                            <option [value]="'1'">เปิดการใช้งาน</option>
+                            <option [value]="'0'">ปิดการใช้งาน</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline" (click)="open = false">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="save()">Ok</button>
+    </div>
+</clr-modal>

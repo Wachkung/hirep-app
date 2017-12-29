@@ -18,8 +18,9 @@ import { AdminModule } from './admin/admin.module';
 import { MenuGrpService } from './common-services/menugrp.service';
 import { LoginComponent } from './login/login.component';
 import { ViewComponent } from './view/view.component';
-import {MenuitemService}  from './admin/common-services/menuitem.service';
- 
+import { MenuitemService } from './admin/common-services/menuitem.service';
+import{HosInfoService}  from './admin/common-services/hos-info.service';
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -41,7 +42,7 @@ import {MenuitemService}  from './admin/common-services/menuitem.service';
     providers: [
         { provide: 'API_URL', useValue: environment.apiUrl },
         MenuGrpService,
-        MenuitemService,
+        MenuitemService,HosInfoService
        
 
     ],

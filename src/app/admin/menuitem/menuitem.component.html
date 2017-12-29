@@ -1,61 +1,60 @@
-
-<button class="btn btn-primary" (click)="open = true">เพิ่มข้อมูล</button>
+<button class="btn btn-primary" (click)="Open()">เพิ่มข้อมูล</button>
 
 <clr-datagrid>
-  <clr-dg-column>ลำดับ</clr-dg-column>
-  <clr-dg-column>ชื่อ เมนู</clr-dg-column>
-   <clr-dg-column>สถานะ</clr-dg-column>
-   
-  <clr-dg-row *ngFor="let x of allmenuitem">
-      
-    
-    
-    
-    <clr-dg-action-overflow>
-      
+    <clr-dg-column>ลำดับ</clr-dg-column>
+    <clr-dg-column>ชื่อเมนูย่อย</clr-dg-column>
+    <clr-dg-column>สถานะ</clr-dg-column>
+    <clr-dg-row *ngFor="let x of allmenuitem">
+        <clr-dg-action-overflow>
             <button class="btn btn-primary" (click)="editData(x)">แก้ไขข้อมูล</button>
-            <button class="btn btn-success"(click)="delete(x)">ลบข้อมูล</button>
-          </clr-dg-action-overflow>
-    <clr-dg-cell>{{x.item_id}}</clr-dg-cell>
-      <clr-dg-cell>{{x.item_name}}</clr-dg-cell>
-      <clr-dg-cell>{{x.item_status}}</clr-dg-cell>
-       
-     
-  </clr-dg-row>
+            <button class="btn btn-success" (click)="delete(x)">ลบข้อมูล</button>
+        </clr-dg-action-overflow>
+        <clr-dg-cell>{{x.item_id}}</clr-dg-cell>
+        <clr-dg-cell>{{x.item_name}}</clr-dg-cell>
+        <clr-dg-cell>{{x.item_status}}</clr-dg-cell>
+    </clr-dg-row>
 
-  <clr-dg-footer>{{allmenuitem.length}} เมนู</clr-dg-footer>
+    <clr-dg-footer>{{allmenuitem.length}} เมนู</clr-dg-footer>
 </clr-datagrid>
-
-
-
 <clr-modal [(clrModalOpen)]="open">
-  <h3 class="modal-title">หน่วยงาน</h3>
-  <div class="modal-body">
-    <form>
-      <section class="form-block">
-          <label>หน่วยงาน</label>
-          <div class="form-group">
-              <label for="aForm_1">ลำดับ</label>
-              <input type="text" name="varmenu_id" [(ngModel)]="varmenu_id" placeholder="Enter value here" size="45">
-          </div>
-          <div class="form-group">
-              <label for="aForm_2">ชื่อหน่วยงาน</label>
-              <input type="text" name="varitem_name" [(ngModel)]="varitem_name" size="35">
-          </div>
-          <div class="form-group">
-              <label for="aForm_3">comment</label>
-              <input type="text" name="varcomment" [(ngModel)]="varcomment" size="35">
-          </div>
-          <div class="form-group">
-              <label for="aForm_4">สถานะ</label>
-              <input type="text" name="varitem_status" [(ngModel)]="varitem_status" size="35">
-          </div>
-         
-      </section>
-  </form>
-  </div>
-  <div class="modal-footer">
-      <button type="button" class="btn btn-outline" (click)="open = false">Cancel</button>
-      <button type="button" class="btn btn-primary" (click)="save()">Ok</button>
-  </div>
+    <h3 class="modal-title">From MenuItem </h3>
+    <div class="modal-body">
+        <form>
+            <section class="form-block">
+                <label>เพิ่ม/แก้ไข เมนูย่อย</label>
+                <div class="form-group">
+                    <label for="aForm_1">เมนูหลัก</label>
+                    <!-- <input type="text" name="varmenu_id" [(ngModel)]="varmenu_id" size="45"> -->
+                    <div class="select">
+                        <select [(ngModel)]="varmenu_id" name="varmenu_id" id="varmenu_id">
+                            <option *ngFor="let m of allmenu" [value]="m.menu_id">{{m.menu_name}}</option>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label for="aForm_2">ชื่อเมนูย่อย</label>
+                    <input type="text" name="varitem_name" [(ngModel)]="varitem_name" size="35">
+                </div>
+                <div class="form-group">
+                    <label for="aForm_3">comment</label>
+                    <input type="text" name="varcomment" [(ngModel)]="varcomment" size="35">
+                </div>
+                <div class="form-group">
+                    <label for="aForm_4">สถานะ</label>
+                    <!-- <input type="text" name="varitem_status" [(ngModel)]="varitem_status" size="35"> -->
+                    <div class="select">
+                        <select [(ngModel)]="varitem_status" name="varitem_status" id="varitem_status">
+                            <option [value]="'0'">ปิดการใช้งาน</option>
+                            <option [value]="'1'">เปิดการใช้งาน</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline" (click)="open = false">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="save()">Ok</button>
+    </div>
 </clr-modal>
