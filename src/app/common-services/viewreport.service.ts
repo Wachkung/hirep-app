@@ -12,7 +12,7 @@ export class ViewreportService {
   viewReport(sql, params) {
     return new Promise((resolve, reject) => {
         // แนบตัวแปบไปกับ service
-        this.authHttp.post(`${this.url}/report`, { sql: sql, paramtype : params })
+        this.authHttp.post(`${this.url}/report`, { query_sql: sql, query_params : params })
             .map(res => res.json())
             .subscribe(data => {
                 resolve(data);
