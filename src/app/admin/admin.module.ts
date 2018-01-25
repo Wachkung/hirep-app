@@ -21,6 +21,7 @@ import { MenuSubService } from './common-services/menusub.service';
 import { SubitemComponent } from './subitem/subitem.component';
 import{HosInfoComponent}  from './hos-info/hos-info.component';
 import {HosInfoService} from './common-services/hos-info.service';
+import { OpvisitComponent } from './opvisit/opvisit.component';
 
 
 @NgModule({
@@ -33,7 +34,7 @@ import {HosInfoService} from './common-services/hos-info.service';
         CommonModule,
         AdminRoutingModule
     ],
-    declarations: [HomeComponent, LayoutadmComponent, MenuitemComponent, MenuComponent, SubitemComponent,HosInfoComponent],
+    declarations: [HomeComponent, LayoutadmComponent, MenuitemComponent, MenuComponent, SubitemComponent,HosInfoComponent, OpvisitComponent],
     providers: [
         MenuitemService,
         MenuService,
