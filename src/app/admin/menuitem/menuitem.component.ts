@@ -81,7 +81,7 @@ export class MenuitemComponent implements OnInit {
         // console.log(this.varitem_status);
 
         if (this.varmenu_id && this.varitem_name) {
-            this.menuitemservice.addMenuItem(this.varmenu_id, this.varitem_name, this.varcomment, this.varitem_status)
+            this.menuitemservice.addMenuitem(this.varmenu_id, this.varitem_name, this.varcomment, this.varitem_status)
                 .then((results: any) => {
                     if (results.ok) {
                         console.log("เพิ่มข้อมูลสำเร็จ");
@@ -116,7 +116,7 @@ export class MenuitemComponent implements OnInit {
         // console.log(this.vardchtype);
         // console.log(this.vardchtypename);
         if (this.varitem_id && this.varmenu_id && this.varitem_name && this.varcomment && this.varitem_status) {
-            this.menuitemservice.updateMenuitems(this.varitem_id, this.varmenu_id, this.varitem_name, this.varcomment, this.varitem_status)
+            this.menuitemservice.updateMenuitem(this.varitem_id, this.varmenu_id, this.varitem_name, this.varcomment, this.varitem_status)
                 .then((results: any) => {
                     if (results.ok) {
                         console.log("แก้ไขข้อมูลเรียบร้อย");

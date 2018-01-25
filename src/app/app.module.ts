@@ -20,6 +20,7 @@ import { HirepService } from './common-services/hirep.service';
 import { LoginComponent } from './login/login.component';
 import { ViewComponent } from './view/view.component';
 import { MenuitemService } from './admin/common-services/menuitem.service';
+import { HosInfoService } from './admin/common-services/hos-info.service';
 
 @NgModule({
     declarations: [

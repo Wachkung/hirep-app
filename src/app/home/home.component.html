@@ -2,142 +2,81 @@
 <h4>รายงานผู้มารับบริการงานผู้ป่วยนอก</h4>
 <clr-datagrid>
     <clr-dg-column *ngFor="let x of todaymenu">{{x.name}}</clr-dg-column>
-    <clr-dg-row *ngFor="let x of today">
-        <clr-dg-cell>{{x.namecln}}</clr-dg-cell>
-        <clr-dg-cell>{{x.cns2}}</clr-dg-cell>
+    <clr-dg-row *ngFor="let  of today">
+        <clr-dg-cell *ngFor="let xx of todaymenu">{{x{}}}{{xx.name}} </clr-dg-cell>
     </clr-dg-row>
 </clr-datagrid>
 
 <h4>รายงานผู้มารับบริการงานผู้ป่วยนอกวันนี้</h4>
-<table class="table">
-    <thead>
-        <tr>
-            <th>ลำดับ</th>
-            <th>namecln</th>
-            <th>cln</th>
-            <th>จำนวน</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let total of todaytotal">
-            <td>{{total.Num}}</td>
-            <td>{{total.namecln}}</td>
-            <td>{{total.cln}}</td>
-            <td>{{total.cns2}}</td>
-        </tr>
-    </tbody>
-</table>
+<clr-datagrid>
+    <clr-dg-column *ngFor="let x of todaytotalmenu">{{x.name}}</clr-dg-column>
+    <clr-dg-row *ngFor="let x of todaytotal">
+        <clr-dg-cell>{{x.Num}}</clr-dg-cell>
+        <clr-dg-cell>{{x.namecln}}</clr-dg-cell>
+        <clr-dg-cell>{{x.cln}}</clr-dg-cell>
+        <clr-dg-cell>{{x.cns2}}</clr-dg-cell>
+    </clr-dg-row>
+</clr-datagrid>
+
 <h4> รายงานผู้มารับบริการงานผู้ป่วยนอกแยกตามสิทธิ</h4>
-<table class="table">
-    <thead>
-        <tr>
-            <th>ลำดับ</th>
-            <th>icd10</th>
-            <th>icd10name</th>
-            <th>pttype</th>
-            <th>inscl</th>
-            <th>จำนวน</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let type of todaytype">
-            <td>{{type.Num}}</td>
-            <td>{{type.icd10}}</td>
-            <td>{{type.icd10name}}</td>
-            <td>{{type.pttype}}</td>
-            <td>{{type.inscl}}</td>
-            <td>{{type.can}}</td>
-        </tr>
-    </tbody>
-</table>
+<clr-datagrid>
+    <clr-dg-column *ngFor="let x of todaytypemenu">{{x.name}}</clr-dg-column>
+    <clr-dg-row *ngFor="let x of todaytype">
+        <clr-dg-cell>{{x.Num}}</clr-dg-cell>
+        <clr-dg-cell>{{x.icd10}}</clr-dg-cell>
+        <clr-dg-cell>{{x.pttype}}</clr-dg-cell>
+        <clr-dg-cell>{{x.inscl}}</clr-dg-cell>
+        <clr-dg-cell>{{x.can}}</clr-dg-cell>
+    </clr-dg-row>
+</clr-datagrid>
+
 <h4> รายงานจำนวนผู้ป่วยนอก แยกตาม ICD10 </h4>
-<table class="table">
-    <thead>
-        <tr>
-            <th>ลำดับ</th>
-            <th>ICD10</th>
-            <th>ICD10NAME</th>
-            <th>จำนวน</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let op of opicdtm">
-            <td>{{op.Num}}</td>
-            <td>{{op.ICD10}}</td>
-            <td>{{op.ICD10NAME}}</td>
-            <td>{{op.Total}}</td>
-        </tr>
-    </tbody>
-</table>
+<clr-datagrid>
+    <clr-dg-column *ngFor="let x of opicdtmmenu">{{x.name}}</clr-dg-column>
+    <clr-dg-row *ngFor="let x of opicdtm">
+        <clr-dg-cell>{{x.Num}}</clr-dg-cell>
+        <clr-dg-cell>{{x.ICD10}}</clr-dg-cell>
+        <clr-dg-cell>{{x.ICD10NAME}}</clr-dg-cell>
+        <clr-dg-cell>{{x.Total}}</clr-dg-cell>
+    </clr-dg-row>
+</clr-datagrid>
 <h4> รายงานจำนวนผู้ป่วยห้องอุบัติเหตุฉุกเฉิน แยกตาม ICD10 </h4>
-<table class="table">
-    <thead>
-        <tr>
-            <th>ลำดับ</th>
-            <th>ICD10</th>
-            <th>ICD10NAME</th>
-            <th>จำนวน</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let er of ericdtm">
-            <td>{{er.Num}}</td>
-            <td>{{er.ICD10}}</td>
-            <td>{{er.ICD10NAME}}</td>
-            <td>{{er.Total}}</td>
-        </tr>
-    </tbody>
-</table>
+<clr-datagrid>
+    <clr-dg-column *ngFor="let x of ericdtmmenu">{{x.name}}</clr-dg-column>
+    <clr-dg-row *ngFor="let x of ericdtm">
+        <clr-dg-cell>{{x.Num}}</clr-dg-cell>
+        <clr-dg-cell>{{x.ICD10}}</clr-dg-cell>
+        <clr-dg-cell>{{x.ICD10NAME}}</clr-dg-cell>
+        <clr-dg-cell>{{x.Total}}</clr-dg-cell>
+    </clr-dg-row>
+</clr-datagrid>
 <h4> รายงานจำนวนผู้ป่วยทัตกรรม แยกตาม ICD10 </h4>
-<table class="table">
-    <thead>
-        <tr>
-            <th>ลำดับ</th>
-            <th>ICD10</th>
-            <th>ICD10NAME</th>
-            <th>จำนวน</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let dt of dticdtm">
-            <td>{{dt.Num}}</td>
-            <td>{{dt.ICD10}}</td>
-            <td>{{dt.ICD10NAME}}</td>
-            <td>{{dt.Total}}</td>
-        </tr>
-    </tbody>
-</table>
+<clr-datagrid>
+    <clr-dg-column *ngFor="let x of dticdtmmenu">{{x.name}}</clr-dg-column>
+    <clr-dg-row *ngFor="let x of dticdtm">
+        <clr-dg-cell>{{x.Num}}</clr-dg-cell>
+        <clr-dg-cell>{{x.ICD10}}</clr-dg-cell>
+        <clr-dg-cell>{{x.ICD10NAME}}</clr-dg-cell>
+        <clr-dg-cell>{{x.Total}}</clr-dg-cell>
+    </clr-dg-row>
+</clr-datagrid>
 <h4> รายงานจำนวนผู้มารับบริการกับมารับบริการห้องฉุกเฉิน ด้วยโรคเดิมใน 24 ชั่วโมง</h4>
-<table class="table">
-    <thead>
-        <tr>
-            <th>ลำดับ</th>
-            <th>เดือน</th>
-            <th>จำนวน</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let r of revier">
-            <td>{{r.Num}}</td>
-            <td>{{r.m}}</td>
-            <td>{{r.revisit}}</td>
-        </tr>
-    </tbody>
-</table>
+<clr-datagrid>
+    <clr-dg-column *ngFor="let x of reviermenu">{{x.name}}</clr-dg-column>
+    <clr-dg-row *ngFor="let x of revier">
+        <clr-dg-cell>{{x.Num}}</clr-dg-cell>
+        <clr-dg-cell>{{x.m}}</clr-dg-cell>
+        <clr-dg-cell>{{x.ICD10NAME}}</clr-dg-cell>
+        <clr-dg-cell>{{x.revisit}}</clr-dg-cell>
+    </clr-dg-row>
+</clr-datagrid>
 <h4> รายงานจำนวนผู้มารับบริการตึกผู้ป่วยนอก Refer สิทธิ์ UCS </h4>
-<table class="table">
-    <thead>
-        <tr>
-            <th>ลำดับ</th>
-            <th>month</th>
-            <th>จำนวน</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let re of reopuc">
-            <td>{{re.Num}}</td>
-            <td>{{re.month}}</td>
-            <td>{{re.count}}</td>
-        </tr>
-    </tbody>
-</table>
+<clr-datagrid>
+    <clr-dg-column *ngFor="let x of reopucmenu">{{x.name}}</clr-dg-column>
+    <clr-dg-row *ngFor="let x of reopuc">
+        <clr-dg-cell>{{x.Num}}</clr-dg-cell>
+        <clr-dg-cell>{{x.m}}</clr-dg-cell>
+        <clr-dg-cell>{{x.ICD10NAME}}</clr-dg-cell>
+        <clr-dg-cell>{{x.revisit}}</clr-dg-cell>
+    </clr-dg-row>
+</clr-datagrid>

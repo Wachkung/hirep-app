@@ -19,6 +19,9 @@ import { MenuService } from '../admin/common-services/menu.service';
 import { UserService } from './common-services/user.service';
 import { MenuSubService } from './common-services/menusub.service';
 import { SubitemComponent } from './subitem/subitem.component';
+import{HosInfoComponent}  from './hos-info/hos-info.component';
+import {HosInfoService} from './common-services/hos-info.service';
+
 
 @NgModule({
     imports: [
@@ -30,12 +33,13 @@ import { SubitemComponent } from './subitem/subitem.component';
         CommonModule,
         AdminRoutingModule
     ],
-    declarations: [HomeComponent, LayoutadmComponent, MenuitemComponent, MenuComponent, SubitemComponent],
+    declarations: [HomeComponent, LayoutadmComponent, MenuitemComponent, MenuComponent, SubitemComponent,HosInfoComponent],
     providers: [
         MenuitemService,
         MenuService,
         UserService,
-        MenuSubService
+        MenuSubService,
+        HosInfoService
     ],
 })
 export class AdminModule { }

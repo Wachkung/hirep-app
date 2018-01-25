@@ -17,7 +17,6 @@ export class HomeComponent implements OnInit {
     errorMessage: string;
 
     today: any[] = [];
-    todaymenu: any[] = [];
     todaytotal: any[] = [];
     todaytype: any[] = [];
     revier: any[] = [];
@@ -25,6 +24,14 @@ export class HomeComponent implements OnInit {
     ericdtm: any[] = [];
     dticdtm: any[] = [];
     reopuc: any[] = [];
+    todaymenu: any[] = [];
+    todaytotalmenu: any[] = [];
+    todaytypemenu: any[] = [];
+    reviermenu: any[] = [];
+    opicdtmmenu: any[] = [];
+    ericdtmmenu: any[] = [];
+    dticdtmmenu: any[] = [];
+    reopucmenu: any[] = [];
     date: Date = new Date();
     mode = 'Promise';
 
@@ -50,6 +57,7 @@ export class HomeComponent implements OnInit {
                 if (result.ok) {
                     this.today = result.rows[0]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
                     this.todaymenu = result.rows[1]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
+                    console.log(this.today);
                     console.log(this.todaymenu);
                 }
             }).catch(error => {
@@ -62,7 +70,8 @@ export class HomeComponent implements OnInit {
             .then((result: any) => {
                 if (result.ok) {
                     this.todaytotal = result.rows[0]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
-                    console.log(this.todaytotal);
+                    this.todaytotalmenu = result.rows[1]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
+                    // console.log(this.todaytotal);
                 }
             }).catch(error => {
                 console.log(error);
@@ -74,7 +83,8 @@ export class HomeComponent implements OnInit {
             .then((result: any) => {
                 if (result.ok) {
                     this.todaytype = result.rows; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
-                    console.log(this.todaytype[0]);
+                    this.todaytypemenu = result.rows[1]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
+                    // console.log(this.todaytype[0]);
                 }
             }).catch(error => {
                 console.log(error);
@@ -85,8 +95,9 @@ export class HomeComponent implements OnInit {
         this.hirepService.getRevier()
             .then((result: any) => {
                 if (result.ok) {
-                    this.revier = result.rows; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
-                    console.log(this.revier);
+                    this.revier = result.rows[0]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
+                    this.reviermenu = result.rows[1]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
+                    // console.log(this.revier);
                 }
             }).catch(error => {
                 console.log(error);
@@ -97,8 +108,9 @@ export class HomeComponent implements OnInit {
         this.hirepService.getOpicdtm()
             .then((result: any) => {
                 if (result.ok) {
-                    this.opicdtm = result.rows; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
-                    console.log(this.opicdtm);
+                    this.opicdtm = result.rows[0]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
+                    this.opicdtmmenu = result.rows[1]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
+                    // console.log(this.opicdtm);
                 }
             }).catch(error => {
                 console.log(error);
@@ -109,8 +121,9 @@ export class HomeComponent implements OnInit {
         this.hirepService.getEricdtm()
             .then((result: any) => {
                 if (result.ok) {
-                    this.ericdtm = result.rows; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
-                    console.log(this.ericdtm);
+                    this.ericdtm = result.rows[0]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
+                    this.ericdtmmenu = result.rows[1]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
+                    // console.log(this.ericdtm);
                 }
             }).catch(error => {
                 console.log(error);
@@ -121,8 +134,9 @@ export class HomeComponent implements OnInit {
         this.hirepService.getReopuc()
             .then((result: any) => {
                 if (result.ok) {
-                    this.reopuc = result.rows; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
-                    console.log(this.reopuc);
+                    this.reopuc = result.rows[0]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
+                    this.reopucmenu = result.rows[1]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
+                    // console.log(this.reopuc);
                 }
             }).catch(error => {
                 console.log(error);
@@ -133,8 +147,9 @@ export class HomeComponent implements OnInit {
         this.hirepService.getDticdtm()
             .then((result: any) => {
                 if (result.ok) {
-                    this.dticdtm = result.rows; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
-                    console.log(this.dticdtm);
+                    this.dticdtm = result.rows[0]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
+                    this.dticdtmmenu = result.rows[1]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
+                    // console.log(this.dticdtm);
                 }
             }).catch(error => {
                 console.log(error);

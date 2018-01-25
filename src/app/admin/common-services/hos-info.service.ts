@@ -3,18 +3,16 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class MenuitemService {
+export class HosInfoService {
 
   constructor(
-    @Inject('API_URL')
-    private url: string,
+    @Inject('API_URL') private url: string,
     private http: Http
   ) { }
 
- 
-  getAllMenuitem() {
+  getAllHosInfo() {
     return new Promise((resolve, reject) => {
-      this.http.get(`${this.url}/items`)
+      this.http.get(`${this.url}/setup`)
         .map(res => res.json())
         .subscribe(data => {
           resolve(data);
@@ -25,14 +23,12 @@ export class MenuitemService {
   }
 
 
-  addMenuitem(varmenu_id: any, varitem_name: any, varcomment: any, varitem_status: any) {
+  addHosinfo(varheader:any,vardata:any,varcomment) {
     return new Promise((resolve, reject) => {
-      this.http.post(`${this.url}/items`,{
-        menu_id: varmenu_id,
-        item_name: varitem_name,
-        comment: varcomment,
-        item_status: varitem_status
-        
+      this.http.post(`${this.url}/setup`,{
+        header :varheader,
+        data:vardata,
+        comment:varcomment
         
       })
         .map(res => res.json())
@@ -45,15 +41,13 @@ export class MenuitemService {
   }
 
 
-  updateMenuitem(varitem_id:any,varmenu_id:any,varitem_name:any,varcomment:any,varitem_status:any) {
+  updateHosinfo(var_id:any,varheader:any,vardata:any,varcomment) {
     return new Promise((resolve, reject) => {
-      this.http.put(`${this.url}/items`,{
-        item_id :varitem_id,
-        menu_id:varmenu_id,
-        item_name:varitem_name,
-        comment:varcomment,
-        item_status:varitem_status
-        
+      this.http.put(`${this.url}/setup`,{
+        id :var_id,
+        header:varheader,
+        data:vardata,
+        comment:varcomment
         
       })
         .map(res => res.json())
@@ -64,10 +58,10 @@ export class MenuitemService {
         })
     })
   }
-  remove(varitem_id:any) {
+  remove(var_id:any) {
     return new Promise((resolve, reject) => {
       
-      this.http.post(`${this.url}/items/del`,{item_id:varitem_id})
+      this.http.post(`${this.url}/setup/del`,{id:var_id})
 
 
         .map(res => res.json())
@@ -78,16 +72,6 @@ export class MenuitemService {
         })
     })
   }
-
-
-
-
-
-
-
-
-
-
 
 
 
