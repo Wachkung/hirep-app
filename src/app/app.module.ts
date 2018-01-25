@@ -16,10 +16,11 @@ import { LayoutComponent } from './layout/layout.component';
 import { AdminModule } from './admin/admin.module';
 
 import { MenuGrpService } from './common-services/menugrp.service';
+import { HirepService } from './common-services/hirep.service';
 import { LoginComponent } from './login/login.component';
 import { ViewComponent } from './view/view.component';
 import { MenuitemService } from './admin/common-services/menuitem.service';
-import{HosInfoService}  from './admin/common-services/hos-info.service';
+import { HosInfoService } from './admin/common-services/hos-info.service';
 
 @NgModule({
     declarations: [
@@ -42,9 +43,8 @@ import{HosInfoService}  from './admin/common-services/hos-info.service';
     providers: [
         { provide: 'API_URL', useValue: environment.apiUrl },
         MenuGrpService,
-        MenuitemService,HosInfoService
-       
-
+        MenuitemService,
+        HirepService
     ],
     bootstrap: [AppComponent]
 })
