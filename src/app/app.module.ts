@@ -16,6 +16,7 @@ import { LayoutComponent } from './layout/layout.component';
 import { AdminModule } from './admin/admin.module';
 
 import { MenuGrpService } from './common-services/menugrp.service';
+import { HirepService } from './common-services/hirep.service';
 import { LoginComponent } from './login/login.component';
 import { ViewComponent } from './view/view.component';
 import { MenuitemService } from './admin/common-services/menuitem.service';
@@ -42,7 +43,7 @@ import { MenuitemService } from './admin/common-services/menuitem.service';
         { provide: 'API_URL', useValue: environment.apiUrl },
         MenuGrpService,
         MenuitemService,
-
+        HirepService
     ],
     bootstrap: [AppComponent]
 })

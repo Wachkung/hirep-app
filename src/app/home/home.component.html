@@ -1,20 +1,143 @@
-<!--
-  ~ Copyright (c) 2016 VMware, Inc. All Rights Reserved.
-  ~ This software is released under MIT license.
-  ~ The full license information can be found in LICENSE in the root directory of this project.
-  -->
-<p>This is a Clarity seed application. This is the default page that loads for the application.</p>
+<h3>รายงานข้อมูล ณ. วันที่ {{ date | date }} </h3>
+<h4>รายงานผู้มารับบริการงานผู้ป่วยนอก</h4>
+<clr-datagrid>
+    <clr-dg-column *ngFor="let x of todaymenu">{{x.name}}</clr-dg-column>
+    <clr-dg-row *ngFor="let x of today">
+        <clr-dg-cell>{{x.namecln}}</clr-dg-cell>
+        <clr-dg-cell>{{x.cns2}}</clr-dg-cell>
+    </clr-dg-row>
+</clr-datagrid>
 
-<clr-dropdown>
-    <button clrDropdownTrigger class="btn">
-        Dropdown
-        <clr-icon shape="caret down"></clr-icon>
-    </button>
-    <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
-        <a clrDropdownItem href="javascript://">Action 1</a>
-        <a clrDropdownItem href="javascript://">Action 2</a>
-        <div class="dropdown-divider"></div>
-        <a clrDropdownItem href="javascript://">Link 1</a>
-        <a clrDropdownItem href="javascript://">Link 2</a>
-    </clr-dropdown-menu>
-</clr-dropdown>
+<h4>รายงานผู้มารับบริการงานผู้ป่วยนอกวันนี้</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ลำดับ</th>
+            <th>namecln</th>
+            <th>cln</th>
+            <th>จำนวน</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let total of todaytotal">
+            <td>{{total.Num}}</td>
+            <td>{{total.namecln}}</td>
+            <td>{{total.cln}}</td>
+            <td>{{total.cns2}}</td>
+        </tr>
+    </tbody>
+</table>
+<h4> รายงานผู้มารับบริการงานผู้ป่วยนอกแยกตามสิทธิ</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ลำดับ</th>
+            <th>icd10</th>
+            <th>icd10name</th>
+            <th>pttype</th>
+            <th>inscl</th>
+            <th>จำนวน</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let type of todaytype">
+            <td>{{type.Num}}</td>
+            <td>{{type.icd10}}</td>
+            <td>{{type.icd10name}}</td>
+            <td>{{type.pttype}}</td>
+            <td>{{type.inscl}}</td>
+            <td>{{type.can}}</td>
+        </tr>
+    </tbody>
+</table>
+<h4> รายงานจำนวนผู้ป่วยนอก แยกตาม ICD10 </h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ลำดับ</th>
+            <th>ICD10</th>
+            <th>ICD10NAME</th>
+            <th>จำนวน</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let op of opicdtm">
+            <td>{{op.Num}}</td>
+            <td>{{op.ICD10}}</td>
+            <td>{{op.ICD10NAME}}</td>
+            <td>{{op.Total}}</td>
+        </tr>
+    </tbody>
+</table>
+<h4> รายงานจำนวนผู้ป่วยห้องอุบัติเหตุฉุกเฉิน แยกตาม ICD10 </h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ลำดับ</th>
+            <th>ICD10</th>
+            <th>ICD10NAME</th>
+            <th>จำนวน</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let er of ericdtm">
+            <td>{{er.Num}}</td>
+            <td>{{er.ICD10}}</td>
+            <td>{{er.ICD10NAME}}</td>
+            <td>{{er.Total}}</td>
+        </tr>
+    </tbody>
+</table>
+<h4> รายงานจำนวนผู้ป่วยทัตกรรม แยกตาม ICD10 </h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ลำดับ</th>
+            <th>ICD10</th>
+            <th>ICD10NAME</th>
+            <th>จำนวน</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let dt of dticdtm">
+            <td>{{dt.Num}}</td>
+            <td>{{dt.ICD10}}</td>
+            <td>{{dt.ICD10NAME}}</td>
+            <td>{{dt.Total}}</td>
+        </tr>
+    </tbody>
+</table>
+<h4> รายงานจำนวนผู้มารับบริการกับมารับบริการห้องฉุกเฉิน ด้วยโรคเดิมใน 24 ชั่วโมง</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ลำดับ</th>
+            <th>เดือน</th>
+            <th>จำนวน</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let r of revier">
+            <td>{{r.Num}}</td>
+            <td>{{r.m}}</td>
+            <td>{{r.revisit}}</td>
+        </tr>
+    </tbody>
+</table>
+<h4> รายงานจำนวนผู้มารับบริการตึกผู้ป่วยนอก Refer สิทธิ์ UCS </h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ลำดับ</th>
+            <th>month</th>
+            <th>จำนวน</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let re of reopuc">
+            <td>{{re.Num}}</td>
+            <td>{{re.month}}</td>
+            <td>{{re.count}}</td>
+        </tr>
+    </tbody>
+</table>
