@@ -1,11 +1,11 @@
 <h3>รายงานข้อมูล ณ. วันที่ {{ date | date }} </h3>
 <h4>รายงานผู้มารับบริการงานผู้ป่วยนอก</h4>
-<!-- <clr-datagrid>
-    <clr-dg-column *ngFor="let x of todaymenu">{{x.name}}</clr-dg-column>
-    <clr-dg-row *ngFor="let  of today">
-        <clr-dg-cell *ngFor="let xx of todaymenu">{{x{}}}{{xx.name}} </clr-dg-cell>
+<clr-datagrid>
+    <clr-dg-column *ngFor="let n of todaymenu">{{n.name}}</clr-dg-column>
+    <clr-dg-row *ngFor="let x of today">
+        <clr-dg-cell *ngFor="let xx of todaymenu">{{xx.name}}</clr-dg-cell>
     </clr-dg-row>
-</clr-datagrid> -->
+</clr-datagrid>
 
 <h4>รายงานผู้มารับบริการงานผู้ป่วยนอกวันนี้</h4>
 <clr-datagrid>
@@ -75,8 +75,7 @@
     <clr-dg-column *ngFor="let x of reopucmenu">{{x.name}}</clr-dg-column>
     <clr-dg-row *ngFor="let x of reopuc">
         <clr-dg-cell>{{x.Num}}</clr-dg-cell>
-        <clr-dg-cell>{{x.m}}</clr-dg-cell>
-        <clr-dg-cell>{{x.ICD10NAME}}</clr-dg-cell>
-        <clr-dg-cell>{{x.revisit}}</clr-dg-cell>
+        <clr-dg-cell>{{x.month}}</clr-dg-cell>
+        <clr-dg-cell>{{x.count}}</clr-dg-cell>
     </clr-dg-row>
 </clr-datagrid>

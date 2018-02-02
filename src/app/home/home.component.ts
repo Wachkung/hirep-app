@@ -57,8 +57,9 @@ export class HomeComponent implements OnInit {
                 if (result.ok) {
                     this.today = result.rows[0]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
                     this.todaymenu = result.rows[1]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
-                    console.log(this.today);
-                    console.log(this.todaymenu);
+
+                    // console.log(this.today);
+                    // console.log(this.today[0]);
                 }
             }).catch(error => {
                 console.log(error);
@@ -82,9 +83,9 @@ export class HomeComponent implements OnInit {
         this.hirepService.getTodaytype()
             .then((result: any) => {
                 if (result.ok) {
-                    this.todaytype = result.rows; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
+                    this.todaytype = result.rows[0]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
                     this.todaytypemenu = result.rows[1]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
-                    // console.log(this.todaytype[0]);
+                    // console.log(this.todaytype);
                 }
             }).catch(error => {
                 console.log(error);
@@ -136,7 +137,7 @@ export class HomeComponent implements OnInit {
                 if (result.ok) {
                     this.reopuc = result.rows[0]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
                     this.reopucmenu = result.rows[1]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
-                    // console.log(this.reopuc);
+                    console.log(this.reopuc);
                 }
             }).catch(error => {
                 console.log(error);

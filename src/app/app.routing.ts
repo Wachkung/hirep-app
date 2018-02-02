@@ -8,7 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { ViewComponent } from './view/view.component';
 
 export const ROUTES: Routes = [
-    { path: '', redirectTo: 'hirep', pathMatch: 'full' },
+    { path: '', redirectTo: 'hirep/home', pathMatch: 'full' },
     {
         path: 'hirep',
         component: LayoutComponent,
