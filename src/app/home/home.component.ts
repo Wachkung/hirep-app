@@ -5,6 +5,10 @@ import { FormsModule } from '@angular/forms';
 import { HirepService } from '../common-services/hirep.service';
 import * as CryptoJS from 'crypto-js';
 
+import * as _ from 'lodash';
+import * as moment from 'moment';
+
+import { Pipe, PipeTransform } from '@angular/core';
 
 @Component({
     styleUrls: ['./home.component.scss'],
@@ -32,8 +36,12 @@ export class HomeComponent implements OnInit {
     ericdtmmenu: any[] = [];
     dticdtmmenu: any[] = [];
     reopucmenu: any[] = [];
+    rowLength: any;
     date: Date = new Date();
     mode = 'Promise';
+
+    tableDatas: any = [];
+    fieldDatas: any = [];
 
     constructor(private hirepService: HirepService) { }
 
@@ -95,15 +103,41 @@ export class HomeComponent implements OnInit {
         this.revier = [];
         this.hirepService.getRevier()
             .then((result: any) => {
+                const datas = [];
                 if (result.ok) {
+                    const _datafield = [];
                     this.revier = result.rows[0]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
                     this.reviermenu = result.rows[1]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
-                    // console.log(this.revier);
+                    console.log("reviermenu");
+                    console.log(this.reviermenu);
+                    console.log("this.revier");
+                    console.log(this.revier);
+                    _.forEach(this.reviermenu, (v, k) => {
+                        _datafield.push(v.name);
+                    })
+
+                    // // this.rowLength = this.revier.length;
+                    // // this.tableDatas = Array.of(this.revier).length;
+                    // // console.log(this.tableDatas);
+                    this.revier.forEach(v => {
+                        let _data = [];
+                        _.forEach(v, x => {
+                            _data.push(x);
+                        });
+                        this.tableDatas.push(_data);
+                    });
+                    this.fieldDatas = _datafield;
+                    console.log("Data Field");
+                    console.log(this.fieldDatas);
+                    console.log("table datas");
+                    console.log(this.tableDatas);
                 }
             }).catch(error => {
                 console.log(error);
             })
     }
+
+
     showOpicdtm() {
         this.opicdtm = [];
         this.hirepService.getOpicdtm()

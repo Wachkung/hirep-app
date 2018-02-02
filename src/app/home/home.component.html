@@ -79,3 +79,14 @@
         <clr-dg-cell>{{x.count}}</clr-dg-cell>
     </clr-dg-row>
 </clr-datagrid>
+
+<h2>ทดสอบ Dynamic Data</h2>
+<clr-datagrid>
+    <clr-dg-column *ngFor="let f of fieldDatas"> {{f}}</clr-dg-column>
+    <clr-dg-placeholder>ไม่พบรายการ</clr-dg-placeholder>
+    <clr-dg-row *clrDgItems="let d of tableDatas">
+        <clr-dg-cell *ngFor="let x of d; let idx=index;">
+            {{ x }}
+        </clr-dg-cell>
+    </clr-dg-row>
+</clr-datagrid>
