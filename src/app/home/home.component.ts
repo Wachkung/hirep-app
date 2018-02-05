@@ -108,29 +108,31 @@ export class HomeComponent implements OnInit {
                     const _datafield = [];
                     this.revier = result.rows[0]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
                     this.reviermenu = result.rows[1]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
-                    console.log("reviermenu");
-                    console.log(this.reviermenu);
-                    console.log("this.revier");
-                    console.log(this.revier);
-                    _.forEach(this.reviermenu, (v, k) => {
+                    // console.log("reviermenu");
+                    // console.log(this.reviermenu);
+                    // console.log("this.revier");
+                    // console.log(this.revier);
+
+                    _.forEach(this.reviermenu, (v, k) => {  // ดึงข้อมูล colums ไปเก็บไว้ที่ _datafield
                         _datafield.push(v.name);
                     })
 
-                    // // this.rowLength = this.revier.length;
-                    // // this.tableDatas = Array.of(this.revier).length;
-                    // // console.log(this.tableDatas);
-                    this.revier.forEach(v => {
+                    // this.rowLength = this.revier.length;
+                    // this.tableDatas = Array.of(this.revier).length;
+                    // console.log(this.tableDatas);
+
+                    this.revier.forEach(v => {   // ดึงข้อมูล roows ไปเก็บไว้ที่ _data
                         let _data = [];
                         _.forEach(v, x => {
                             _data.push(x);
                         });
-                        this.tableDatas.push(_data);
+                        this.tableDatas.push(_data);  // ส่งค่า _data ไปเก็บใน this.tableDatas เพื่อไปแสดงหน้า thml
                     });
-                    this.fieldDatas = _datafield;
-                    console.log("Data Field");
-                    console.log(this.fieldDatas);
-                    console.log("table datas");
-                    console.log(this.tableDatas);
+                    this.fieldDatas = _datafield;  // ส่งค่า _datafield ไปเก็บใน this.fieldDatas เพื่อไปแสดงหน้า thml
+                    // console.log("Data Field");
+                    // console.log(this.fieldDatas);
+                    // console.log("table datas");
+                    // console.log(this.tableDatas);
                 }
             }).catch(error => {
                 console.log(error);
