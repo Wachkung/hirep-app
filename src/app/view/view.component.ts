@@ -45,6 +45,11 @@ export class ViewComponent implements OnInit {
         private router: Router,
         private viewreportService: ViewreportService
     ) {
+        this.route.params.subscribe(params => {
+            this.menu_id = params['menu_id'];
+            console.log(this.menu_id);
+        })
+        // console.log(this.route.params);
     }
 
     ngOnInit() {
