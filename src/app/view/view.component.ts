@@ -46,20 +46,21 @@ export class ViewComponent implements OnInit {
         private viewreportService: ViewreportService
     ) {
         this.route.params.subscribe(params => {
-            this.menu_id = params['menu_id'];
-            console.log(this.menu_id);
+            this.sub_id = params['menu_id'];
+            console.log(this.sub_id);
+            this.showDatas(this.sub_id);
         })
         // console.log(this.route.params);
     }
 
     ngOnInit() {
-        this.showDatas();
+        // this.showDatas();
         // this.sub_id = this.nav.get(sub_item_id)
 
     }
-    showDatas() {
+    showDatas(sub_id) {
         // this.nav.get(sub_id)
-        this.sub_id = '1';   // ส่งค่ามาจาก เมนู
+        // this.sub_id = '1';   // ส่งค่ามาจาก เมนู
         this.subitems = [];
         this.viewreportService.selectReport(this.sub_id)
             .then((result: any) => {
