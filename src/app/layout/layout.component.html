@@ -26,7 +26,7 @@
                             <clr-icon shape="bar-chart" class="is-solid"></clr-icon>{{MTyp.item_name}}</a> -->
                         {{MTyp.item_name}}
                         <ul class="list" *ngFor="let Sub of getSubItem">
-                            <li class="nav-item" *ngFor="let Sub of getSubItem">
+                            <li class="nav-item" *ngIf="Sub.item_id === MTyp.item_id">
                                 <a class="nav-link" href="#" [routerLink]="['./view',Sub.sub_item_id]" routerLinkActive="active" clrDropdownItem>
                                     <clr-icon shape="bar-chart" class="is-solid"></clr-icon>{{Sub.sub_item_name}}</a>
                             </li>

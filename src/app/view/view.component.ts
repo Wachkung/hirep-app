@@ -47,7 +47,10 @@ export class ViewComponent implements OnInit {
     ) {
         this.route.params.subscribe(params => {
             this.sub_id = params['menu_id'];
-            console.log(this.sub_id);
+            this.fieldDatas = [null];
+            this.tableDatas = [null];
+
+            // console.log(this.sub_id);
             this.showDatas(this.sub_id);
         })
         // console.log(this.route.params);

@@ -88,7 +88,7 @@ export class SubitemComponent implements OnInit {
         console.log(this.comment);
         console.log(this.sub_item_status);
 
-        if (this.item_id && this.sub_item_name && this.query_sql && this.query_params) {
+        if (this.item_id && this.sub_item_name && this.query_sql) {
             this.menuSunService.addMenuSub(
                 this.item_id,
                 this.sub_item_name,
@@ -136,7 +136,7 @@ export class SubitemComponent implements OnInit {
     updateData() {
         // console.log(this.vardchtype);
         // console.log(this.vardchtypename);
-        if (this.item_id && this.sub_item_name && this.query_sql && this.query_params) {
+        if (this.item_id && this.sub_item_name && this.query_sql) {
             this.menuSunService.updateMenuSub(
                 this.sub_item_id,
                 this.item_id,
