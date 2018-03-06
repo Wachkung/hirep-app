@@ -78,17 +78,19 @@ export class ViewComponent implements OnInit {
                     this.subitems = result.rows;   // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
                     this.sql = this.subitems[0].query_sql
                     this.params = this.subitems[0].query_params
-                    console.log(this.subitems);
-                    console.log(this.sql);
-                    console.log(this.params);
+                    // console.log(this.subitems);
+                    // console.log(this.sql);
+                    // console.log(this.params);
                     if (this.params) {
                         this.open = true;
                         this.param_xx = this.params.split(",");
-                        console.log(this.param_xx);
+                    //    console.log(this.param_xx);
                     } else {
                         this.open = false;
                     }
-
+                    // console.log("param xx:" + this.param_xx);
+                    // console.log("params :" + this.params);
+                    // console.log("param index:" + this.param);
                     this.Dataviews = [];
                     this.viewreportService.viewReport(this.sql, this.params)
                         .then((res: any) => {
@@ -96,6 +98,7 @@ export class ViewComponent implements OnInit {
                             if (res.ok) {
                                 const _datafield = [];
                                 this.Dataviews = res.rows[0]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
+                                // console.log("data:" + this.Dataviews);
                                 this.AllMenu = res.rows[1]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
                                 // console.log("reviermenu");
                                 // console.log(this.reviermenu);
@@ -124,7 +127,7 @@ export class ViewComponent implements OnInit {
                                 // console.log(this.tableDatas);
                             }
                         }).catch(error => {
-                            console.log(error);
+                            console.log("eror:" + error);
                         })
 
                 }
@@ -132,19 +135,20 @@ export class ViewComponent implements OnInit {
                 console.log(error);
             })
     }
+
     updateParam(xx, inputdata, idx) {
         // let i: any;
-        let parme: any;
+        let param: any;
         // console.log(xx);
         // console.log(inputdata.value);
         // console.log(idx);
         let name: any = xx;
         let data: any = inputdata.value;
         // let id = (idx + 1);
-        //update object kpiamp โดยส่งค่า index(idx) ไปด้วย
+        // update object kpiamp โดยส่งค่า index(idx) ไปด้วย
         this.param[idx] = { name, data };
 
-        console.log(this.param);
+        // console.log(this.param);
     }
 
 
@@ -164,18 +168,21 @@ export class ViewComponent implements OnInit {
             this.param_x[i] = xx;
         }
 
-        console.log(this.param_x);
-        console.log(this.sql);
+        //console.log(this.param_x);
+        //console.log(this.sql);
 
         this.params = this.param_x;
-
+        //console.log("send params:" + this.params);
+        // this.params = ['2004-10-01', '2017-10-31', 'I10'];
         this.Dataviews = [];
         this.viewreportService.viewReport(this.sql, this.params)
             .then((res: any) => {
                 const datas = [];
                 if (res.ok) {
                     const _datafield = [];
+                    // console.log("raw data: " + res.rows);
                     this.Dataviews = res.rows[0]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
+                    // console.log("data:" + this.Dataviews);
                     this.AllMenu = res.rows[1]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
                     // console.log("reviermenu");
                     // console.log(this.AllMenu);
