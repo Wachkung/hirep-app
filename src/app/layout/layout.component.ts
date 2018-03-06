@@ -14,7 +14,8 @@ export class LayoutComponent implements OnInit {
     getRout: any = [];
     menu_id: any;
     // var_menu_id: any;
-    item_id: any;
+    i: any;
+    item_id: any = [];
     sub_id: any;
     // var_item_id: any;
     constructor(
@@ -43,6 +44,7 @@ export class LayoutComponent implements OnInit {
             })
     }
     ShowMenu(menu_id) {
+        this.item_id = [null];
         this.menu_id = menu_id;
         // console.log(this.menu_id);
         this.getMenuTyp = [];
@@ -50,10 +52,16 @@ export class LayoutComponent implements OnInit {
             .then((rows: any) => {
                 if (rows.ok) {
                     this.getMenuTyp = rows.rows;
-                    this.item_id = this.getMenuTyp[0].item_id
                     console.log(this.getMenuTyp);
-                    console.log(this.item_id);
+                    console.log(this.getMenuTyp.length);
 
+
+                    for (this.i = 0; this.i < this.getMenuTyp.length; this.i++) {
+                        this.item_id[this.i] = this.getMenuTyp[this.i].item_id
+
+                    }
+
+                    console.log(this.item_id);
                     this.getSubItem = [];
                     this.menuGrpService.getSubItem(this.item_id)
                         .then((res: any) => {

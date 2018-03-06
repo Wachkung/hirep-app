@@ -8,7 +8,7 @@ import { LayoutadmComponent } from './layoutadm/layoutadm.component';
 import { MenuitemComponent } from './menuitem/menuitem.component';
 import { MenuComponent } from './menu/menu.component';
 import { SubitemComponent } from './subitem/subitem.component';
-import {HosInfoComponent} from './hos-info/hos-info.component';
+import { HosInfoComponent } from './hos-info/hos-info.component';
 
 const routes: Routes = [
     // { path: '', redirectTo: 'admin/home', pathMatch: 'full' }, // กำหมด Path ให้วิง ไปที่ client/Home
@@ -20,8 +20,8 @@ const routes: Routes = [
             { path: 'home', component: HomeComponent },
             { path: 'menu', component: MenuComponent },
             { path: 'menuitem', component: MenuitemComponent },
-          { path: 'submenu', component: SubitemComponent },
-        { path: 'setup', component: HosInfoComponent }
+            { path: 'submenu', component: SubitemComponent },
+            { path: 'setup', component: HosInfoComponent }
         ]
     }
 ];
