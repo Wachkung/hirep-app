@@ -1,7 +1,7 @@
 <clr-main-container>
     <clr-header class="header-5">
         <div class="branding">
-            <a href="#" class="nav-link">
+            <a href="#" [routerLink]="['./home']" class="nav-link">
                 <clr-icon shape="dashboard" class="has-badge"></clr-icon>
                 <span class="title">Hirep ระบบรายงาน จังหวัดอุบลราชธานี</span>
             </a>
@@ -18,20 +18,25 @@
             <clr-dropdown *ngFor="let MGrp of getMenuGrp">
                 <button class="nav-link active" clrDropdownTrigger (click)="ShowMenu(MGrp.menu_id)">
                     <!-- <input hidden='true' class="text" type="text" [(ngModel)]="menu_id" name="menu_id" placeholder="MGrp.menu_id"> -->
-                    <clr-icon shape="flask" class="is-solid"></clr-icon> {{MGrp.menu_id}}:{{MGrp.menu_name}}
+                    <clr-icon shape="flask" class="is-solid"></clr-icon>{{MGrp.menu_name}}
                 </button>
                 <clr-dropdown-menu *clrIfOpen>
                     <li class="nav-item" *ngFor="let MTyp of getMenuTyp">
-                        <a class="nav-link" href="#" [routerLink]="['./view']" routerLinkActive="active" clrDropdownItem>
-                            <clr-icon shape="bar-chart" class="is-solid"></clr-icon> {{MTyp.item_name}}</a>
+                        <!-- <a class="nav-link" href="#" [routerLink]="['./view',MTyp.item_id]" routerLinkActive="active" clrDropdownItem>
+                            <clr-icon shape="bar-chart" class="is-solid"></clr-icon>{{MTyp.item_name}}</a> -->
+                        {{MTyp.item_name}}
+                        <ul class="list" *ngFor="let Sub of getSubItem">
+                            <li class="nav-item" *ngFor="let Sub of getSubItem">
+                                <a class="nav-link" href="#" [routerLink]="['./view',Sub.sub_item_id]" routerLinkActive="active" clrDropdownItem>
+                                    <clr-icon shape="bar-chart" class="is-solid"></clr-icon>{{Sub.sub_item_name}}</a>
+                            </li>
+                        </ul>
                     </li>
                    
                 </clr-dropdown-menu>
-
             </clr-dropdown>
         </ul>
     </nav>
-
     <div class="content-container">
         <div class="content-area">
             <router-outlet></router-outlet>

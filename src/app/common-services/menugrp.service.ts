@@ -32,4 +32,16 @@ export class MenuGrpService {
         })
     }
 
+    getSubItem(item_id) {
+        return new Promise((resolve, reject) => {
+            this.http.get(`${this.url}/subitems/item/${item_id}`)
+                .map(res => res.json())
+                .subscribe(data => {
+                    resolve(data);
+                }, error => {
+                    reject(error);
+                })
+        })
+    }
+
 }

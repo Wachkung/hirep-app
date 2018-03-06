@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuGrpService } from '../common-services/menugrp.service';
+import { ActivatedRoute, Router, Params, RoutesRecognized } from '@angular/router';
 
 @Component({
     selector: 'app-layout',
@@ -9,10 +10,16 @@ import { MenuGrpService } from '../common-services/menugrp.service';
 export class LayoutComponent implements OnInit {
     getMenuGrp: any = [];
     getMenuTyp: any = [];
+    getSubItem: any = [];
     getRout: any = [];
     menu_id: any;
-    var_menu_id: any;
+    // var_menu_id: any;
+    item_id: any;
+    sub_id: any;
+    // var_item_id: any;
     constructor(
+        private route: ActivatedRoute,
+        private router: Router,
         private menuGrpService: MenuGrpService,
     ) { }
 
@@ -43,7 +50,25 @@ export class LayoutComponent implements OnInit {
             .then((rows: any) => {
                 if (rows.ok) {
                     this.getMenuTyp = rows.rows;
-                    // console.log(this.getMenuTyp);
+                    this.item_id = this.getMenuTyp[0].item_id
+                    console.log(this.getMenuTyp);
+                    console.log(this.item_id);
+
+                    this.getSubItem = [];
+                    this.menuGrpService.getSubItem(this.item_id)
+                        .then((res: any) => {
+                            if (rows.ok) {
+                                this.getSubItem = res.rows;
+                                console.log(this.getSubItem);
+                            } else {
+                                console.log(JSON.stringify(res.error));
+                            }
+                        })
+                        .catch(() => {
+                            console.log("Server Error")
+                        })
+
+
                 } else {
                     console.log(JSON.stringify(rows.error));
                 }
@@ -52,5 +77,24 @@ export class LayoutComponent implements OnInit {
                 console.log("Server Error")
             })
     }
+
+    // ShowSubMenu(item_id) {
+    //     this.item_id = item_id;
+    //     // console.log(this.menu_id);
+    //     this.getSubItem = [];
+    //     this.menuGrpService.getSubItem(this.item_id)
+    //         .then((rows: any) => {
+    //             if (rows.ok) {
+    //                 this.getSubItem = rows.rows;
+    //                 console.log(this.getSubItem);
+    //             } else {
+    //                 console.log(JSON.stringify(rows.error));
+    //             }
+    //         })
+    //         .catch(() => {
+    //             console.log("Server Error")
+    //         })
+    // }
+
 
 }
