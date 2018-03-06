@@ -1,3 +1,21 @@
+<clr-modal [(clrModalOpen)]="open">
+    <h3 class="modal-title">From params </h3>
+    <div class="modal-body">
+        <form>
+            <section class="form-block" *ngFor="let xx of param_xx; let idx = index;">
+                <div class="form-group">
+                    <label for="aForm_2">{{ xx }}</label>
+                    <input type="text" name="xx" id="xx" size="35" value="" #inputdata (keyup)="updateParam(xx,inputdata,idx)">
+                    <!-- <input type="text" name="xx" [(ngModel)]="xx" size="35"> -->
+                </div>
+            </section>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="showParams()">Ok</button>
+    </div>
+</clr-modal>
+
 <h2>ทดสอบ Dynamic Data</h2> {{ menu_id }}
 <clr-datagrid>
     <clr-dg-column *ngFor="let f of fieldDatas"> {{f}}</clr-dg-column>

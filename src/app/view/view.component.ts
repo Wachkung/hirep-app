@@ -21,6 +21,8 @@ import * as moment from 'moment';
 })
 export class ViewComponent implements OnInit {
     errorMessage: string;
+    open: boolean = false;
+    isUpdate: boolean = false;
 
     Dataviews: any[] = [];
     AllMenu: any[] = [];
@@ -32,6 +34,9 @@ export class ViewComponent implements OnInit {
     sub_id: any;
     sql: any;
     params: any;
+    param_x: any = [];
+    param_xx: any = [];
+    param: any = [];
 
     rowLength: any;
     date: Date = new Date();
@@ -61,10 +66,12 @@ export class ViewComponent implements OnInit {
         // this.sub_id = this.nav.get(sub_item_id)
 
     }
+
     showDatas(sub_id) {
         // this.nav.get(sub_id)
         // this.sub_id = '1';   // ส่งค่ามาจาก เมนู
         this.subitems = [];
+        this.param_xx = [];
         this.viewreportService.selectReport(this.sub_id)
             .then((result: any) => {
                 if (result.ok) {
@@ -74,6 +81,13 @@ export class ViewComponent implements OnInit {
                     console.log(this.subitems);
                     console.log(this.sql);
                     console.log(this.params);
+                    if (this.params) {
+                        this.open = true;
+                        this.param_xx = this.params.split(",");
+                        console.log(this.param_xx);
+                    } else {
+                        this.open = false;
+                    }
 
                     this.Dataviews = [];
                     this.viewreportService.viewReport(this.sql, this.params)
@@ -113,6 +127,81 @@ export class ViewComponent implements OnInit {
                             console.log(error);
                         })
 
+                }
+            }).catch(error => {
+                console.log(error);
+            })
+    }
+    updateParam(xx, inputdata, idx) {
+        // let i: any;
+        let parme: any;
+        // console.log(xx);
+        // console.log(inputdata.value);
+        // console.log(idx);
+        let name: any = xx;
+        let data: any = inputdata.value;
+        // let id = (idx + 1);
+        //update object kpiamp โดยส่งค่า index(idx) ไปด้วย
+        this.param[idx] = { name, data };
+
+        console.log(this.param);
+    }
+
+
+
+    showParams() {
+        this.open = false;
+
+        let i: any;
+        let x: any;
+        let xx: any;
+
+        for (i = 0; i < this.param.length; i++) {
+            x = this.param[i].name;
+            xx = this.param[i].data;
+            console.log(xx);
+
+            this.param_x[i] = xx;
+        }
+
+        console.log(this.param_x);
+        console.log(this.sql);
+
+        this.params = this.param_x;
+
+        this.Dataviews = [];
+        this.viewreportService.viewReport(this.sql, this.params)
+            .then((res: any) => {
+                const datas = [];
+                if (res.ok) {
+                    const _datafield = [];
+                    this.Dataviews = res.rows[0]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
+                    this.AllMenu = res.rows[1]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
+                    // console.log("reviermenu");
+                    // console.log(this.AllMenu);
+                    // console.log("this.revier");
+                    // console.log(this.revier);
+
+                    _.forEach(this.AllMenu, (v, k) => {  // ดึงข้อมูล colums ไปเก็บไว้ที่ _datafield
+                        _datafield.push(v.name);
+                    })
+
+                    // this.rowLength = this.revier.length;
+                    // this.tableDatas = Array.of(this.revier).length;
+                    // console.log(this.tableDatas);
+
+                    this.Dataviews.forEach(v => {   // ดึงข้อมูล roows ไปเก็บไว้ที่ _data
+                        let _data = [];
+                        _.forEach(v, x => {
+                            _data.push(x);
+                        });
+                        this.tableDatas.push(_data);  // ส่งค่า _data ไปเก็บใน this.tableDatas เพื่อไปแสดงหน้า thml
+                    });
+                    this.fieldDatas = _datafield;  // ส่งค่า _datafield ไปเก็บใน this.fieldDatas เพื่อไปแสดงหน้า thml
+                    // console.log("Data Field");
+                    // console.log(this.fieldDatas);
+                    // console.log("table datas");
+                    // console.log(this.tableDatas);
                 }
             }).catch(error => {
                 console.log(error);
