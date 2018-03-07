@@ -138,7 +138,7 @@ export class ViewComponent implements OnInit {
 
     updateParam(xx, inputdata, idx) {
         // let i: any;
-        let param: any;
+        let param: any;     
         // console.log(xx);
         // console.log(inputdata.value);
         // console.log(idx);

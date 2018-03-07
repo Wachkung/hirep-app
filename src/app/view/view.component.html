@@ -5,8 +5,14 @@
             <section class="form-block" *ngFor="let xx of param_xx; let idx = index;">
                 <div class="form-group">
                     <label for="aForm_2">{{ xx }}</label>
-                    <input type="text" name="xx" id="xx" size="35" value="" #inputdata (keyup)="updateParam(xx,inputdata,idx)">
+<!--                    <div *ngIf="xx == 'datestart' || xx == 'dateend'">
+                        <input type="date" name="xx" id="xx" size="35" value="" #inputdata (keyup)="updateParam(xx,inputdata,idx)">                    
+                    </div>
+                    <div *ngIf="xx !== 'datestart' && xx !== 'dateend'">
+                    -->
+                        <input type="text" name="xx" id="xx" size="35" value="" #inputdata (keyup)="updateParam(xx,inputdata,idx)">
                     <!-- <input type="text" name="xx" [(ngModel)]="xx" size="35"> -->
+
                 </div>
             </section>
         </form>
