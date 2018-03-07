@@ -84,7 +84,7 @@ export class ViewComponent implements OnInit {
                     if (this.params) {
                         this.open = true;
                         this.param_xx = this.params.split(",");
-                    //    console.log(this.param_xx);
+                        //    console.log(this.param_xx);
                     } else {
                         this.open = false;
                     }
@@ -136,14 +136,15 @@ export class ViewComponent implements OnInit {
             })
     }
 
-    updateParam(xx, inputdata, idx) {
+    KeyParam(xx, input, idx) {
         // let i: any;
-        let param: any;     
-        // console.log(xx);
-        // console.log(inputdata.value);
-        // console.log(idx);
+
+        let param: any;
+        console.log(xx);
+        console.log(input.value);
+        console.log(idx);
         let name: any = xx;
-        let data: any = inputdata.value;
+        let data: any = input.value;
         // let id = (idx + 1);
         // update object kpiamp โดยส่งค่า index(idx) ไปด้วย
         this.param[idx] = { name, data };
@@ -154,11 +155,10 @@ export class ViewComponent implements OnInit {
 
 
     showParams() {
-        this.open = false;
-
         let i: any;
         let x: any;
         let xx: any;
+        this.open = false;
 
         for (i = 0; i < this.param.length; i++) {
             x = this.param[i].name;
@@ -168,8 +168,8 @@ export class ViewComponent implements OnInit {
             this.param_x[i] = xx;
         }
 
-        //console.log(this.param_x);
-        //console.log(this.sql);
+        console.log(this.param_x);
+        console.log(this.sql);
 
         this.params = this.param_x;
         //console.log("send params:" + this.params);
