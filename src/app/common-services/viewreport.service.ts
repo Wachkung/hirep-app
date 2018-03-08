@@ -16,6 +16,7 @@ export class ViewreportService {
                 .map(res => res.json())
                 .subscribe(data => {
                     resolve(data);
+                    console.log(data);
                 }, error => {
                     reject(error);
                 });

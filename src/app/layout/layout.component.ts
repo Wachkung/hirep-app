@@ -86,23 +86,4 @@ export class LayoutComponent implements OnInit {
             })
     }
 
-    // ShowSubMenu(item_id) {
-    //     this.item_id = item_id;
-    //     // console.log(this.menu_id);
-    //     this.getSubItem = [];
-    //     this.menuGrpService.getSubItem(this.item_id)
-    //         .then((rows: any) => {
-    //             if (rows.ok) {
-    //                 this.getSubItem = rows.rows;
-    //                 console.log(this.getSubItem);
-    //             } else {
-    //                 console.log(JSON.stringify(rows.error));
-    //             }
-    //         })
-    //         .catch(() => {
-    //             console.log("Server Error")
-    //         })
-    // }
-
-
 }
