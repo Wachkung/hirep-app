@@ -33,6 +33,8 @@ export class SubitemComponent implements OnInit {
     }
     Open() {
         this.open = true;
+        this.isUpdate = false;
+
         this.item_id = null;
         this.sub_item_name = null;
         this.query_sql = null;
@@ -103,6 +105,10 @@ export class SubitemComponent implements OnInit {
                         this.showAllMenuSub();
                         this.open = false;
                         this.isUpdate = false;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6da6f93320395fc479c9e16953f879d7a60a8c38
                         this.item_id = null;
                         this.sub_item_name = null;
                         this.query_sql = null;
@@ -152,6 +158,8 @@ export class SubitemComponent implements OnInit {
                         console.log("แก้ไขข้อมูลเรียบร้อย");
                         this.showAllMenuSub();
                         this.open = false;
+                        this.isUpdate = false;
+
                         this.item_id = null;
                         this.sub_item_name = null;
                         this.query_sql = null;

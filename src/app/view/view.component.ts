@@ -30,7 +30,7 @@ export class ViewComponent implements OnInit {
     getSubItem: any = [];
     menu_id: any;
     item_id: any;
-
+    title_name: any;
     sub_id: any;
     sql: any;
     params: any;
@@ -78,6 +78,7 @@ export class ViewComponent implements OnInit {
                     this.subitems = result.rows;   // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
                     this.sql = this.subitems[0].query_sql
                     this.params = this.subitems[0].query_params
+                    this.title_name = this.subitems[0].sub_item_name
                     // console.log(this.subitems);
                     // console.log(this.sql);
                     // console.log(this.params);
