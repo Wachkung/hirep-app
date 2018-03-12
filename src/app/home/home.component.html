@@ -1,12 +1,13 @@
 <h3>รายงานข้อมูล ณ. วันที่ {{ date | date }} </h3>
 <h4>รายงานผู้มารับบริการงานผู้ป่วยนอก</h4>
 <clr-datagrid>
-    <clr-dg-column *ngFor="let n of todaymenu">{{n.name}}</clr-dg-column>
+    <clr-dg-column *ngFor="let x of today">{{x.namecln}}</clr-dg-column>
     <clr-dg-row *ngFor="let x of today">
-        <clr-dg-cell *ngFor="let xx of todaymenu">{{xx.name}}</clr-dg-cell>
-    </clr-dg-row>
-</clr-datagrid>
-
+        <clr-dg-cell>{{x.namecln}}</clr-dg-cell>  
+      
+        <clr-dg-cell>{{x.cns2}}</clr-dg-cell >
+        </clr-dg-row>
+    </clr-datagrid>
 <h4>รายงานผู้มารับบริการงานผู้ป่วยนอกวันนี้</h4>
 <clr-datagrid>
     <clr-dg-column *ngFor="let x of todaytotalmenu">{{x.name}}</clr-dg-column>
