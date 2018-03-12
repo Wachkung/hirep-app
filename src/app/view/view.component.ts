@@ -156,6 +156,8 @@ export class ViewComponent implements OnInit {
 
 
     showParams() {
+        this.fieldDatas = [null];
+        this.tableDatas = [null];
         let i: any;
         let x: any;
         let xx: any;
