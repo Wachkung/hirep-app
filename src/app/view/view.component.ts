@@ -72,6 +72,9 @@ export class ViewComponent implements OnInit {
         // this.sub_id = '1';   // ส่งค่ามาจาก เมนู
         this.subitems = [];
         this.param_xx = [];
+        this.param_x = [null];
+        this.param = [null];
+
         this.viewreportService.selectReport(this.sub_id)
             .then((result: any) => {
                 if (result.ok) {
@@ -139,6 +142,8 @@ export class ViewComponent implements OnInit {
 
     KeyParam(xx, input, idx) {
         // let i: any;
+        // this.params = [null];
+        // this.param = [null];
 
         let param: any;
         console.log(xx);
@@ -156,6 +161,7 @@ export class ViewComponent implements OnInit {
 
 
     showParams() {
+
         this.fieldDatas = [null];
         this.tableDatas = [null];
         let i: any;
