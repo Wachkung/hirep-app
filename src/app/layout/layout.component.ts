@@ -27,6 +27,7 @@ export class LayoutComponent implements OnInit {
     ngOnInit() {
         this.ShowMenuGroup();
         // this.ShowMenu();
+        this.ShowItemAll();
     }
     ShowMenuGroup() {
         this.getMenuGrp = [];
@@ -85,5 +86,49 @@ export class LayoutComponent implements OnInit {
                 console.log("Server Error")
             })
     }
+
+    ShowItemAll() {
+        this.item_id = [null];
+        // this.menu_id = menu_id;
+        // console.log(this.menu_id);
+        this.getMenuTyp = [];
+        this.menuGrpService.getItemAll()
+            .then((rows: any) => {
+                if (rows.ok) {
+                    this.getMenuTyp = rows.rows;
+                    console.log(this.getMenuTyp);
+                    console.log(this.getMenuTyp.length);
+
+
+                    for (this.i = 0; this.i < this.getMenuTyp.length; this.i++) {
+                        this.item_id[this.i] = this.getMenuTyp[this.i].item_id
+
+                    }
+
+                    console.log(this.item_id);
+                    this.getSubItem = [];
+                    this.menuGrpService.getSubItem(this.item_id)
+                        .then((res: any) => {
+                            if (rows.ok) {
+                                this.getSubItem = res.rows;
+                                console.log(this.getSubItem);
+                            } else {
+                                console.log(JSON.stringify(res.error));
+                            }
+                        })
+                        .catch(() => {
+                            console.log("Server Error")
+                        })
+
+
+                } else {
+                    console.log(JSON.stringify(rows.error));
+                }
+            })
+            .catch(() => {
+                console.log("Server Error")
+            })
+    }
+
 
 }
