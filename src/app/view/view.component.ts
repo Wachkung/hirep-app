@@ -10,6 +10,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import * as _ from 'lodash';
 import * as moment from 'moment';
 
+import { Angular2Csv } from 'angular2-csv/Angular2-csv';
+
 
 // import { Component, OnInit } from '@angular/core';
 
@@ -66,6 +68,24 @@ export class ViewComponent implements OnInit {
         // this.sub_id = this.nav.get(sub_item_id)
 
     }
+
+    exportToExcel() {
+        var options = {
+            fieldSeparator: ',',
+            quoteStrings: '"',
+            decimalseparator: '.',
+            showLabels: true,
+            showTitle: false,
+            useBom: true,
+            headers: [this.fieldDatas]
+        };
+        // let excelDatas = this.Dataviews;
+
+        new Angular2Csv(this.Dataviews, this.title_name, options);
+        // this.excelService.exportAsExcelFile(excelDatas, this.tableName);
+
+    }
+
 
     showDatas(sub_id) {
         // this.nav.get(sub_id)

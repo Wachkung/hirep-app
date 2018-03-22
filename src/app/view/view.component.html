@@ -44,6 +44,9 @@
 
 
 <h2>รายงาน {{ title_name }}</h2>
+<section class="form-block" *ngIf="fieldDatas !=''">
+    <button (click)="exportToExcel()" class="btn btn-primary">Export to excel</button>
+</section>
 <clr-datagrid>
     <clr-dg-column *ngFor="let f of fieldDatas"> {{f}}</clr-dg-column>
     <clr-dg-placeholder>ไม่พบรายการ</clr-dg-placeholder>
@@ -52,4 +55,9 @@
             {{ x }}
         </clr-dg-cell>
     </clr-dg-row>
+    
+    <clr-dg-footer>
+        {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} of {{pagination.totalItems}} rows
+        <clr-dg-pagination #pagination [clrDgPageSize]="50"></clr-dg-pagination>
+    </clr-dg-footer>
 </clr-datagrid>

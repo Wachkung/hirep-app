@@ -15,21 +15,32 @@
 
     <nav class="subnav" [clr-nav-level]="1">
         <ul class="nav">
+            <clr-dropdown *ngFor="let MTyp of getMenuTyp">
+                <button class="nav-link active" clrDropdownTrigger>
+                    {{MTyp.item_name}}
+                </button>
+                <clr-dropdown-menu *clrIfOpen>
+                    <li class="nav-item" *ngFor="let Sub of getSubItem">
+                        <a class="nav-link" href="#" [routerLink]="['./view',Sub.sub_item_id]" routerLinkActive="active" clrDropdownItem *ngIf="Sub.item_id === MTyp.item_id">
+                        {{Sub.sub_item_name}}</a>
+                    </li>
+                </clr-dropdown-menu>
+            </clr-dropdown>
+        </ul>
+    </nav>
+
+    <!-- <nav class="subnav" [clr-nav-level]="1">
+        <ul class="nav">
             <clr-dropdown *ngFor="let MGrp of getMenuGrp">
                 <button class="nav-link active" clrDropdownTrigger (click)="ShowMenu(MGrp.menu_id)">
-                    <!-- <input hidden='true' class="text" type="text" [(ngModel)]="menu_id" name="menu_id" placeholder="MGrp.menu_id"> -->
-                    <!-- <clr-icon shape="flask" class="is-solid"></clr-icon> -->
                     {{MGrp.menu_name}}
                 </button>
                 <clr-dropdown-menu *clrIfOpen>
                     <li class="nav-item" *ngFor="let MTyp of getMenuTyp">
-                        <!-- <a class="nav-link" href="#" [routerLink]="['./view',MTyp.item_id]" routerLinkActive="active" clrDropdownItem>
-                            <clr-icon shape="bar-chart" class="is-solid"></clr-icon>{{MTyp.item_name}}</a> -->
                         {{MTyp.item_name}}
                         <ul class="list" *ngFor="let Sub of getSubItem">
                             <li class="nav-item" *ngIf="Sub.item_id === MTyp.item_id">
                                 <a class="nav-link" href="#" [routerLink]="['./view',Sub.sub_item_id]" routerLinkActive="active" clrDropdownItem>
-                                    <!-- <clr-icon shape="bar-chart" class="is-solid"></clr-icon> -->
                                     {{Sub.sub_item_name}}</a>
                             </li>
                         </ul>
@@ -38,7 +49,9 @@
                 </clr-dropdown-menu>
             </clr-dropdown>
         </ul>
-    </nav>
+    </nav> -->
+
+
     <div class="content-container">
         <div class="content-area">
             <router-outlet></router-outlet>

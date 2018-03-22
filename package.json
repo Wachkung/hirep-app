@@ -25,6 +25,7 @@
         "@clr/icons": "^0.11.0-alpha.1",
         "@clr/ui": "^0.11.0-alpha.1",
         "@webcomponents/custom-elements": "1.0.0",
+        "angular2-csv": "^0.2.5",
         "core-js": "^2.4.1",
         "crypto-js": "^3.1.9-1",
         "moment": "^2.20.1",
