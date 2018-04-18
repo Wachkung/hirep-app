@@ -17,11 +17,13 @@ export class ViewreportService {
                 .subscribe(data => {
                     resolve(data);
                     console.log(data);
+                    // console.log(data[2]);
                 }, error => {
                     reject(error);
                 });
         });
     }
+
     selectReport(sub_id) {
         return new Promise((resolve, reject) => {
             // แนบตัวแปบไปกับ service
