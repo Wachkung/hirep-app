@@ -53,8 +53,8 @@ export class LayoutComponent implements OnInit {
             .then((rows: any) => {
                 if (rows.ok) {
                     this.getMenuTyp = rows.rows;
-                    console.log(this.getMenuTyp);
-                    console.log(this.getMenuTyp.length);
+                    // console.log(this.getMenuTyp);
+                    // console.log(this.getMenuTyp.length);
 
 
                     for (this.i = 0; this.i < this.getMenuTyp.length; this.i++) {
@@ -62,13 +62,13 @@ export class LayoutComponent implements OnInit {
 
                     }
 
-                    console.log(this.item_id);
+                    // console.log(this.item_id);
                     this.getSubItem = [];
                     this.menuGrpService.getSubItem(this.item_id)
                         .then((res: any) => {
                             if (rows.ok) {
                                 this.getSubItem = res.rows;
-                                console.log(this.getSubItem);
+                                // console.log(this.getSubItem);
                             } else {
                                 console.log(JSON.stringify(res.error));
                             }
@@ -96,8 +96,8 @@ export class LayoutComponent implements OnInit {
             .then((rows: any) => {
                 if (rows.ok) {
                     this.getMenuTyp = rows.rows;
-                    console.log(this.getMenuTyp);
-                    console.log(this.getMenuTyp.length);
+                    // console.log(this.getMenuTyp);
+                    // console.log(this.getMenuTyp.length);
 
 
                     for (this.i = 0; this.i < this.getMenuTyp.length; this.i++) {
@@ -105,13 +105,13 @@ export class LayoutComponent implements OnInit {
 
                     }
 
-                    console.log(this.item_id);
+                    // console.log(this.item_id);
                     this.getSubItem = [];
                     this.menuGrpService.getSubItem(this.item_id)
                         .then((res: any) => {
                             if (rows.ok) {
                                 this.getSubItem = res.rows;
-                                console.log(this.getSubItem);
+                                // console.log(this.getSubItem);
                             } else {
                                 console.log(JSON.stringify(res.error));
                             }
