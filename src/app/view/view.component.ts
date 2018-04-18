@@ -148,7 +148,7 @@ export class ViewComponent implements OnInit {
                                 // console.log("Data Field");
                                 // console.log(this.fieldDatas);
                                 // console.log("table datas");
-                                // console.log(this.tableDatas);
+                                console.log(this.tableDatas);
                             }
                         }).catch(error => {
                             console.log("eror:" + error);
@@ -208,15 +208,19 @@ export class ViewComponent implements OnInit {
             .then((res: any) => {
                 const datas = [];
                 if (res.ok) {
+
+                    const xx = res.rows[0].length
                     const _datafield = [];
-                    // console.log("raw data: " + res.rows);
-                    this.Dataviews = res.rows[0]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
-                    // console.log("data:" + this.Dataviews);
-                    this.AllMenu = res.rows[1]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
-                    // console.log("reviermenu");
-                    // console.log(this.AllMenu);
-                    // console.log("this.revier");
-                    // console.log(this.revier);
+
+                    // console.log(xx);
+
+                    if (xx < 4) {
+                        this.Dataviews = res.rows[0][2]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
+                        this.AllMenu = res.rows[1][2]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
+                    } else {
+                        this.Dataviews = res.rows[0]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
+                        this.AllMenu = res.rows[1]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี
+                    }
 
                     _.forEach(this.AllMenu, (v, k) => {  // ดึงข้อมูล colums ไปเก็บไว้ที่ _datafield
                         _datafield.push(v.name);
