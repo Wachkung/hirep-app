@@ -3,11 +3,11 @@
 <clr-datagrid>
     <clr-dg-column *ngFor="let x of today">{{x.namecln}}</clr-dg-column>
     <clr-dg-row *ngFor="let x of today">
-        <clr-dg-cell>{{x.namecln}}</clr-dg-cell>  
-      
-        <clr-dg-cell>{{x.cns2}}</clr-dg-cell >
-        </clr-dg-row>
-    </clr-datagrid>
+        <clr-dg-cell>{{x.namecln}}</clr-dg-cell>
+        <clr-dg-cell>{{x.cns2}}</clr-dg-cell>
+    </clr-dg-row>
+</clr-datagrid>
+
 <h4>รายงานผู้มารับบริการงานผู้ป่วยนอกวันนี้</h4>
 <clr-datagrid>
     <clr-dg-column *ngFor="let x of todaytotalmenu">{{x.name}}</clr-dg-column>
@@ -81,6 +81,7 @@
     </clr-dg-row>
 </clr-datagrid>
 
+<!--
 <h2>ทดสอบ Dynamic Data</h2>
 <clr-datagrid>
     <clr-dg-column *ngFor="let f of fieldDatas"> {{f}}</clr-dg-column>
@@ -91,3 +92,4 @@
         </clr-dg-cell>
     </clr-dg-row>
 </clr-datagrid>
+-->
