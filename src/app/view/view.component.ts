@@ -212,19 +212,21 @@ export class ViewComponent implements OnInit {
                     const xx = res.rows[0].length
                     const _datafield = [];
 
-                    // console.log(xx);
+                    console.log(xx);
 
                     if (xx < 4) {
-                        this.Dataviews = res.rows[0][2]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
-                        this.AllMenu = res.rows[1][2]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
+                        this.Dataviews = res.rows[0][2]; // ตอนรับ ก็ต้องมารับค่า rows แบบ ตัวแปร 1 แยกออกหลายจุด
+                        this.AllMenu = res.rows[1][2];
                     } else {
                         this.Dataviews = res.rows[0]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
-                        this.AllMenu = res.rows[1]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี
+                        this.AllMenu = res.rows[1];
                     }
 
                     _.forEach(this.AllMenu, (v, k) => {  // ดึงข้อมูล colums ไปเก็บไว้ที่ _datafield
                         _datafield.push(v.name);
                     })
+                    // console.log(res.rows);
+                    // console.log(this.AllMenu);
 
                     // this.rowLength = this.revier.length;
                     // this.tableDatas = Array.of(this.revier).length;
