@@ -46,6 +46,18 @@
                             <option [value]="'12'">ธันวาคม</option>
                         </select>
                     </div>
+
+
+                    <div class="select" *ngIf="xx == 'ampur'">
+                        <select name="xx" id="xx" #input (input)="KeyParam(xx,input,idx)">
+                            <option [value]="''">---- เลือกอำเภอ ----</option>
+                            <option [value]="am.amppart" *ngFor="let am of ampur">{{am.nameampur}}</option>
+                        </select>
+                    </div>
+
+
+
+
                     <div class="select" *ngIf="xx == 'yearbudget'">
                         <select name="xx" id="xx" #input (input)="KeyParam(xx,input,idx)">
                             <option [value]="''">---- เลือกปี พ.ศ. ----</option>
@@ -59,7 +71,7 @@
                             <option [value]="'2011'">2554</option>
                         </select>
                     </div>
-                    <div *ngIf="xx !== 'datestart' && xx !== 'dateend' && xx !== 'month' && xx !== 'yearbudget'">
+                    <div *ngIf="xx !== 'datestart' && xx !== 'dateend' && xx !== 'month' && xx !== 'yearbudget' && xx !== 'ampur'">
                         <input type="text" name="xx" id="xx" size="35" value="" #input (keyup)="KeyParam(xx,input,idx)">
                         <!-- <input type="text" name="xx" [(ngModel)]="xx" size="35"> -->
                     </div>

@@ -11,7 +11,7 @@ import * as _ from 'lodash';
 import * as moment from 'moment';
 
 import { Angular2Csv } from 'angular2-csv/Angular2-csv';
-
+import {AmpurService} from '../common-services/ampur.service';
 
 // import { Component, OnInit } from '@angular/core';
 
@@ -29,6 +29,9 @@ export class ViewComponent implements OnInit {
     Dataviews: any[] = [];
     AllMenu: any[] = [];
     subitems: any[] = [];
+
+    ampur:any[] = [];
+
     getSubItem: any = [];
     menu_id: any;
     item_id: any;
@@ -50,7 +53,8 @@ export class ViewComponent implements OnInit {
     constructor(
         private route: ActivatedRoute,
         private router: Router,
-        private viewreportService: ViewreportService
+        private viewreportService: ViewreportService,
+        private ampurService : AmpurService
     ) {
         this.route.params.subscribe(params => {
             this.sub_id = params['menu_id'];
@@ -64,11 +68,27 @@ export class ViewComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.showAmpur();
+
         // this.showDatas();
         // this.sub_id = this.nav.get(sub_item_id)
 
     }
+    showAmpur(){
+        this.ampur = [];
+        this.ampurService.selectAmpur()
+        .then((result:any)=>{
+            if (result.ok) {
+                this.ampur = result.rows; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
+                console.log('this.ampur');
+                console.log(this.ampur);
+            }
+        }).catch(error => {
+            console.log(error);
 
+        })
+    
+    }
     exportToExcel() {
         var options = {
             fieldSeparator: ',',
@@ -214,7 +234,7 @@ export class ViewComponent implements OnInit {
 
                     // console.log(xx);
 
-                    if (xx < 4) {
+                    if (xx < 5) {
                         this.Dataviews = res.rows[0][2]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
                         this.AllMenu = res.rows[1][2]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
                     } else {
