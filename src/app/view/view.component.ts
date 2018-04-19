@@ -6,6 +6,7 @@ import { ViewreportService } from '../common-services/viewreport.service';
 import * as CryptoJS from 'crypto-js';
 import { Pipe, PipeTransform } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AmpurService } from '../common-services/ampur.service';
 
 import * as _ from 'lodash';
 import * as moment from 'moment';
@@ -28,6 +29,8 @@ export class ViewComponent implements OnInit {
 
     Dataviews: any[] = [];
     AllMenu: any[] = [];
+    ampur: any[] = [];
+
     subitems: any[] = [];
     getSubItem: any = [];
     menu_id: any;
@@ -50,7 +53,9 @@ export class ViewComponent implements OnInit {
     constructor(
         private route: ActivatedRoute,
         private router: Router,
-        private viewreportService: ViewreportService
+        private viewreportService: ViewreportService,
+        private ampurService: AmpurService
+
     ) {
         this.route.params.subscribe(params => {
             this.sub_id = params['menu_id'];
@@ -64,8 +69,23 @@ export class ViewComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.showAmpur();
         // this.showDatas();
         // this.sub_id = this.nav.get(sub_item_id)
+    }
+
+    showAmpur() {
+        this.ampur = [];
+        this.ampurService.selectAmpur()
+            .then((result: any) => {
+                if (result.ok) {
+                    this.ampur = result.rows; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
+                    console.log(this.ampur);
+                }
+            }).catch(error => {
+                console.log(error);
+
+            })
 
     }
 

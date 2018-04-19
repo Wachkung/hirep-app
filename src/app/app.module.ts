@@ -21,6 +21,7 @@ import { LoginComponent } from './login/login.component';
 import { ViewComponent } from './view/view.component';
 import { MenuitemService } from './admin/common-services/menuitem.service';
 import { HosInfoService } from './admin/common-services/hos-info.service';
+import { AmpurService } from './common-services/ampur.service';
 
 @NgModule({
     declarations: [
@@ -44,7 +45,8 @@ import { HosInfoService } from './admin/common-services/hos-info.service';
         { provide: 'API_URL', useValue: environment.apiUrl },
         MenuGrpService,
         MenuitemService,
-        HirepService
+        HirepService,
+        AmpurService
     ],
     bootstrap: [AppComponent]
 })
