@@ -1,8 +1,8 @@
 <button class="btn btn-primary" (click)="Open()">เพิ่มข้อมูล</button>
 
 <clr-datagrid>
-    <clr-dg-column>ลำดับ</clr-dg-column>
-    <clr-dg-column>item_id</clr-dg-column>
+    <!-- <clr-dg-column>ลำดับ</clr-dg-column> -->
+    <clr-dg-column>sub_item_id</clr-dg-column>
     <clr-dg-column>sub_item_name</clr-dg-column>
     <clr-dg-column>query_sql</clr-dg-column>
     <clr-dg-column>comment</clr-dg-column>
@@ -11,7 +11,7 @@
             <button class="btn btn-primary" (click)="editData(x)">แก้ไขข้อมูล</button>
             <button class="btn btn-success" (click)="delete(x)">ลบข้อมูล</button>
         </clr-dg-action-overflow>
-        <clr-dg-cell>{{x.item_id}}</clr-dg-cell>
+        <clr-dg-cell>{{x.sub_item_id}}</clr-dg-cell>
         <clr-dg-cell>{{x.sub_item_name}}</clr-dg-cell>
         <clr-dg-cell>{{x.query_sql}}</clr-dg-cell>
         <clr-dg-cell>{{x.comment}}</clr-dg-cell>
@@ -64,8 +64,8 @@
                     <!-- <input type="text" name="varitem_status" [(ngModel)]="varitem_status" size="35"> -->
                     <div class="select">
                         <select [(ngModel)]="sub_item_status" name="sub_item_status" id="sub_item_status">
-                            <option [value]="'1'">เปิดการใช้งาน</option>
-                            <option [value]="'0'">ปิดการใช้งาน</option>
+                            <option [value]="'0'">เปิดการใช้งาน</option>
+                            <option [value]="'1'">ปิดการใช้งาน</option>
                         </select>
                     </div>
                 </div>
