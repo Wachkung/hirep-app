@@ -6,15 +6,15 @@ import { ViewreportService } from '../common-services/viewreport.service';
 import * as CryptoJS from 'crypto-js';
 import { Pipe, PipeTransform } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
- 
+
 
 import * as _ from 'lodash';
 import * as moment from 'moment';
 
 import { Angular2Csv } from 'angular2-csv/Angular2-csv';
-import {AmpurService} from '../common-services/ampur.service';
-import {ClnService} from '../common-services/cln.service';
-import{PcuService} from '../common-services/pcu.service';
+import { AmpurService } from '../common-services/ampur.service';
+import { ClnService } from '../common-services/cln.service';
+import { PcuService } from '../common-services/pcu.service';
 
 // import { Component, OnInit } from '@angular/core';
 
@@ -31,13 +31,13 @@ export class ViewComponent implements OnInit {
 
     Dataviews: any[] = [];
     AllMenu: any[] = [];
-  
+
 
     subitems: any[] = [];
 
-    ampur:any[] = [];
-    cln:any[] = [];
-    pcu:any[] = [];
+    ampur: any[] = [];
+    cln: any[] = [];
+    pcu: any[] = [];
 
 
     getSubItem: any = [];
@@ -63,8 +63,8 @@ export class ViewComponent implements OnInit {
         private router: Router,
         private viewreportService: ViewreportService,
         private ampurService: AmpurService,
-        private clnService:ClnService,
-        private pcuService:PcuService
+        private clnService: ClnService,
+        private pcuService: PcuService
 
     ) {
         this.route.params.subscribe(params => {
@@ -81,7 +81,6 @@ export class ViewComponent implements OnInit {
     ngOnInit() {
         this.showAmpur();
         this.showCln();
-        this.showPcu();
         // this.showDatas();
         // this.sub_id = this.nav.get(sub_item_id)
     }
@@ -115,13 +114,13 @@ export class ViewComponent implements OnInit {
             })
 
     }
-    showPcu() {
+    showPcu(ampur) {
         this.pcu = [];
-        this.pcuService.selectPcu()
+        this.pcuService.selectPcu(ampur)
             .then((result: any) => {
                 if (result.ok) {
                     this.pcu = result.rows; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
-                    console.log(this.cln);
+                    console.log(this.pcu);
                 }
             }).catch(error => {
                 console.log(error);
@@ -129,7 +128,7 @@ export class ViewComponent implements OnInit {
             })
 
     }
-   
+
     exportToExcel() {
         var options = {
             fieldSeparator: ',',
@@ -220,7 +219,6 @@ export class ViewComponent implements OnInit {
                 console.log(error);
             })
     }
-
     KeyParam(xx, input, idx) {
         // let i: any;
         // this.params = [null];
@@ -235,7 +233,28 @@ export class ViewComponent implements OnInit {
         // let id = (idx + 1);
         // update object kpiamp โดยส่งค่า index(idx) ไปด้วย
         this.param[idx] = { name, data };
+        // console.log(this.param);
+    }
+    Paramampur(xx, input, idx, param_xx) {
+        // let i: any;
+        // this.params = [null];
+        // this.param = [null];
 
+        let param: any;
+        console.log(xx);
+        console.log(input.value);
+        console.log(idx);
+        let name: any = xx;
+        let data: any = input.value;
+        // let id = (idx + 1);
+        // update object kpiamp โดยส่งค่า index(idx) ไปด้วย
+        this.param[idx] = { name, data };
+        console.log(param_xx);
+
+        if (param_xx = "pcu") {
+            this.showPcu(input.value);
+            console.log(input.value);
+        }
         // console.log(this.param);
     }
 
@@ -274,13 +293,17 @@ export class ViewComponent implements OnInit {
                     const _datafield = [];
 
                     console.log(res.rows);
+                    console.log(res.rows);
 
-                    if (xx < 5) {
-                        this.Dataviews = res.rows[0][2]; // ตอนรับ ก็ต้องมารับค่า rows แบบ ตัวแปร 1 แยกออกหลายจุด
-                        this.AllMenu = res.rows[1][2];
-                    } else {
+                    if (res.rows[1][0] != null) {
                         this.Dataviews = res.rows[0]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
                         this.AllMenu = res.rows[1];
+                        console.log(this.Dataviews);
+
+                    } else {
+                        this.Dataviews = res.rows[0][2]; // ตอนรับ ก็ต้องมารับค่า rows แบบ ตัวแปร 1 แยกออกหลายจุด
+                        this.AllMenu = res.rows[1][2];
+                        console.log(this.Dataviews);
                     }
 
                     _.forEach(this.AllMenu, (v, k) => {  // ดึงข้อมูล colums ไปเก็บไว้ที่ _datafield
