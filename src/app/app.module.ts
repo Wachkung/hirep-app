@@ -24,6 +24,7 @@ import { HosInfoService } from './admin/common-services/hos-info.service';
 import { AmpurService } from './common-services/ampur.service';
 import {ClnService}   from './common-services/cln.service';
 import {PcuService}   from './common-services/pcu.service';
+import{IdpmService} from './common-services/idpm.service';
 @NgModule({
     declarations: [
         AppComponent,
@@ -49,7 +50,8 @@ import {PcuService}   from './common-services/pcu.service';
         HirepService,
         AmpurService,
         ClnService,
-        PcuService
+        PcuService,
+        IdpmService
     ],
     bootstrap: [AppComponent]
 })

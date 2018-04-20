@@ -9,7 +9,7 @@
                         <input type="date" name="xx" id="xx" size="35" value="" #input (input)="KeyParam(xx,input,idx)">
                     </div>
                     <div class="select" *ngIf="xx == 'ampur'">
-                        <select name="xx" id="xx" #input (input)="KeyParam(xx,input,idx)">
+                        <select name="xx" id="xx" #input (input)="Paramampur(xx,input,idx,param_xx)">
                             <option [value]="''">---- เลือกอำเภอ ----</option>
                             <option [value]="am.amppart" *ngFor="let am of ampur">{{am.nameampur}}</option>
                         </select>
@@ -21,13 +21,21 @@
                             <option [value]="cn.cln" *ngFor="let cn of cln">{{cn.namecln}}</option>
                         </select>
                     </div>
-                    
+
                     <div class="select" *ngIf="xx == 'pcu'">
                         <select name="xx" id="xx" #input (input)="KeyParam(xx,input,idx)">
                             <option [value]="''">---- เลือกรพ. ส.ต. ----</option>
-                            <option [value]="hos.hospsub" *ngFor="let hos of hospsub ">{{hos.namehosp}}</option>
+                            <option [value]="hos.hospsub" *ngFor="let hos of pcu ">{{hos.namehosp}}</option>
                         </select>
                     </div>
+
+                    <div class="select" *ngIf="xx == 'idpm'">
+                        <select name="xx" id="xx" #input (input)="KeyParam(xx,input,idx)">
+                            <option [value]="''">---- เลือกตึกผู้ป่วยใน ----</option>
+                            <option [value]="idm.idpm" *ngFor="let idm of idpm ">{{idm.nameidpm}}</option>
+                        </select>
+                    </div>
+
 
 
 
@@ -49,7 +57,7 @@
                         </select>
                     </div>
 
- 
+
 
 
 
@@ -67,7 +75,7 @@
                         </select>
                     </div>
                     <div *ngIf="xx !== 'datestart' && xx !== 'dateend' && xx !== 'month' && xx !== 'yearbudget' && xx !=='ampur'
-                    && xx !=='cln'  && xx !=='pcu'">
+                    && xx !=='cln'  && xx !=='pcu'  && xx !=='idpm'">
                         <input type="text" name="xx" id="xx" size="35" value="" #input (keyup)="KeyParam(xx,input,idx)">
                         <!-- <input type="text " name="xx " [(ngModel)]="xx " size="35 "> -->
                     </div>
@@ -92,7 +100,7 @@
             {{ x }}
         </clr-dg-cell>
     </clr-dg-row>
-    
+
     <clr-dg-footer>
         {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} of {{pagination.totalItems}} rows
         <clr-dg-pagination #pagination [clrDgPageSize]="50 "></clr-dg-pagination>
