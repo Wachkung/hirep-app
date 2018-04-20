@@ -117,11 +117,11 @@ export class ViewComponent implements OnInit {
     }
     showPcu() {
         this.pcu = [];
-        this.pcuService.selectPcu()
+        this.pcuService.selectPcu(this.ampur)
             .then((result: any) => {
                 if (result.ok) {
                     this.pcu = result.rows; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
-                    console.log(this.cln);
+                    console.log(this.pcu);
                 }
             }).catch(error => {
                 console.log(error);
