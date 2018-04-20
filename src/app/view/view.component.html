@@ -1,4 +1,4 @@
-<section class="form-block" *ngIf="params !==''">
+<section class="form-block" *ngIf="params !== null">
     <h3 class="modal-title">From params </h3>
     <div class="modal-body">
         <form>
@@ -45,7 +45,7 @@
                         </select>
                     </div>
                     <div *ngIf="xx !== 'datestart' && xx !== 'dateend' && xx !== 'month' && xx !== 'yearbudget' && xx !=='ampur' ">
-                        <input type="text " name="xx " id="xx " size="35 " value=" " #input (keyup)="KeyParam(xx,input,idx) ">
+                        <input type="text" name="xx" id="xx" size="35" value="" #input (keyup)="KeyParam(xx,input,idx)">
                         <!-- <input type="text " name="xx " [(ngModel)]="xx " size="35 "> -->
                     </div>
                 </div>

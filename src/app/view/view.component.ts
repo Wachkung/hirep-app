@@ -232,7 +232,7 @@ export class ViewComponent implements OnInit {
                     const xx = res.rows[0].length
                     const _datafield = [];
 
-                    console.log(xx);
+                    console.log(res.rows);
 
                     if (xx < 5) {
                         this.Dataviews = res.rows[0][2]; // ตอนรับ ก็ต้องมารับค่า rows แบบ ตัวแปร 1 แยกออกหลายจุด
