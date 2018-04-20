@@ -6,12 +6,15 @@ import { ViewreportService } from '../common-services/viewreport.service';
 import * as CryptoJS from 'crypto-js';
 import { Pipe, PipeTransform } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+ 
 
 import * as _ from 'lodash';
 import * as moment from 'moment';
 
 import { Angular2Csv } from 'angular2-csv/Angular2-csv';
 import {AmpurService} from '../common-services/ampur.service';
+import {ClnService} from '../common-services/cln.service';
+import{PcuService} from '../common-services/pcu.service';
 
 // import { Component, OnInit } from '@angular/core';
 
@@ -28,9 +31,14 @@ export class ViewComponent implements OnInit {
 
     Dataviews: any[] = [];
     AllMenu: any[] = [];
+  
+
     subitems: any[] = [];
 
     ampur:any[] = [];
+    cln:any[] = [];
+    pcu:any[] = [];
+
 
     getSubItem: any = [];
     menu_id: any;
@@ -54,7 +62,10 @@ export class ViewComponent implements OnInit {
         private route: ActivatedRoute,
         private router: Router,
         private viewreportService: ViewreportService,
-        private ampurService : AmpurService
+        private ampurService: AmpurService,
+        private clnService:ClnService,
+        private pcuService:PcuService
+
     ) {
         this.route.params.subscribe(params => {
             this.sub_id = params['menu_id'];
@@ -69,26 +80,56 @@ export class ViewComponent implements OnInit {
 
     ngOnInit() {
         this.showAmpur();
-
+        this.showCln();
+        this.showPcu();
         // this.showDatas();
         // this.sub_id = this.nav.get(sub_item_id)
-
     }
-    showAmpur(){
+
+    showAmpur() {
         this.ampur = [];
         this.ampurService.selectAmpur()
-        .then((result:any)=>{
-            if (result.ok) {
-                this.ampur = result.rows; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
-                console.log('this.ampur');
-                console.log(this.ampur);
-            }
-        }).catch(error => {
-            console.log(error);
+            .then((result: any) => {
+                if (result.ok) {
+                    this.ampur = result.rows; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
+                    console.log(this.ampur);
+                }
+            }).catch(error => {
+                console.log(error);
 
-        })
-    
+            })
+
     }
+
+    showCln() {
+        this.cln = [];
+        this.clnService.selectCln()
+            .then((result: any) => {
+                if (result.ok) {
+                    this.cln = result.rows; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
+                    console.log(this.cln);
+                }
+            }).catch(error => {
+                console.log(error);
+
+            })
+
+    }
+    showPcu() {
+        this.pcu = [];
+        this.pcuService.selectPcu()
+            .then((result: any) => {
+                if (result.ok) {
+                    this.pcu = result.rows; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
+                    console.log(this.cln);
+                }
+            }).catch(error => {
+                console.log(error);
+
+            })
+
+    }
+   
     exportToExcel() {
         var options = {
             fieldSeparator: ',',
@@ -232,19 +273,21 @@ export class ViewComponent implements OnInit {
                     const xx = res.rows[0].length
                     const _datafield = [];
 
-                    // console.log(xx);
+                    console.log(xx);
 
                     if (xx < 5) {
-                        this.Dataviews = res.rows[0][2]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
-                        this.AllMenu = res.rows[1][2]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
+                        this.Dataviews = res.rows[0][2]; // ตอนรับ ก็ต้องมารับค่า rows แบบ ตัวแปร 1 แยกออกหลายจุด
+                        this.AllMenu = res.rows[1][2];
                     } else {
                         this.Dataviews = res.rows[0]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
-                        this.AllMenu = res.rows[1]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี
+                        this.AllMenu = res.rows[1];
                     }
 
                     _.forEach(this.AllMenu, (v, k) => {  // ดึงข้อมูล colums ไปเก็บไว้ที่ _datafield
                         _datafield.push(v.name);
                     })
+                    console.log(res.rows);
+                    // console.log(this.AllMenu);
 
                     // this.rowLength = this.revier.length;
                     // this.tableDatas = Array.of(this.revier).length;

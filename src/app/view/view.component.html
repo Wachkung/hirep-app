@@ -1,24 +1,3 @@
-<!-- <clr-modal [(clrModalOpen)]="open">
-    <h3 class="modal-title">From params </h3>
-    <div class="modal-body">
-        <form>
-            <section class="form-block" *ngFor="let xx of param_xx; let idx = index;">
-                <div class="form-group">
-                    <label for="aForm_2">{{ xx }}</label>
-                    <div *ngIf="xx == 'datestart' || xx == 'dateend'">
-                        <input type="date" name="xx" id="xx" size="35" value="" #input (input)="KeyParam(xx,input,idx)">
-                    </div>
-                    <div *ngIf="xx !== 'datestart' && xx !== 'dateend'">
-                        <input type="text" name="xx" id="xx" size="35" value="" #input (keyup)="KeyParam(xx,input,idx)">
-                    </div>
-                </div>
-            </section>
-        </form>
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-primary" (click)="showParams()">Ok</button>
-    </div>
-</clr-modal> -->
 <section class="form-block" *ngIf="params !==''">
     <h3 class="modal-title">From params </h3>
     <div class="modal-body">
@@ -29,6 +8,29 @@
                     <div *ngIf="xx == 'datestart' || xx == 'dateend'">
                         <input type="date" name="xx" id="xx" size="35" value="" #input (input)="KeyParam(xx,input,idx)">
                     </div>
+                    <div class="select" *ngIf="xx == 'ampur'">
+                        <select name="xx" id="xx" #input (input)="KeyParam(xx,input,idx)">
+                            <option [value]="''">---- เลือกอำเภอ ----</option>
+                            <option [value]="am.amppart" *ngFor="let am of ampur">{{am.nameampur}}</option>
+                        </select>
+                    </div>
+
+                    <div class="select" *ngIf="xx == 'cln'">
+                        <select name="xx" id="xx" #input (input)="KeyParam(xx,input,idx)">
+                            <option [value]="''">---- เลือกคลีนิค ----</option>
+                            <option [value]="cn.cln" *ngFor="let cn of cln">{{cn.namecln}}</option>
+                        </select>
+                    </div>
+                    
+                    <div class="select" *ngIf="xx == 'pcu'">
+                        <select name="xx" id="xx" #input (input)="KeyParam(xx,input,idx)">
+                            <option [value]="''">---- เลือกรพ. ส.ต. ----</option>
+                            <option [value]="hos.hospsub" *ngFor="let hos of hospsub ">{{hos.namehosp}}</option>
+                        </select>
+                    </div>
+
+
+
                     <div class="select" *ngIf="xx == 'month'">
                         <select name="xx" id="xx" #input (input)="KeyParam(xx,input,idx)">
                             <option [value]="''">---- เลือกเดือน ----</option>
@@ -47,14 +49,7 @@
                         </select>
                     </div>
 
-
-                    <div class="select" *ngIf="xx == 'ampur'">
-                        <select name="xx" id="xx" #input (input)="KeyParam(xx,input,idx)">
-                            <option [value]="''">---- เลือกอำเภอ ----</option>
-                            <option [value]="am.amppart" *ngFor="let am of ampur">{{am.nameampur}}</option>
-                        </select>
-                    </div>
-
+ 
 
 
 
@@ -71,35 +66,35 @@
                             <option [value]="'2011'">2554</option>
                         </select>
                     </div>
-                    <div *ngIf="xx !== 'datestart' && xx !== 'dateend' && xx !== 'month' && xx !== 'yearbudget' && xx !== 'ampur'">
-                        <input type="text" name="xx" id="xx" size="35" value="" #input (keyup)="KeyParam(xx,input,idx)">
-                        <!-- <input type="text" name="xx" [(ngModel)]="xx" size="35"> -->
+                    <div *ngIf="xx !== 'datestart' && xx !== 'dateend' && xx !== 'month' && xx !== 'yearbudget' && xx !=='ampur'
+                    && xx !=='cln'  && xx !=='pcu'">
+                        <input type="text " name="xx " id="xx " size="35 " value=" " #input (keyup)="KeyParam(xx,input,idx) ">
+                        <!-- <input type="text " name="xx " [(ngModel)]="xx " size="35 "> -->
                     </div>
                 </div>
             </section>
         </form>
     </div>
-    <div class="form-group">
-        <button type="submit" class="btn btn-primary" (click)="showParams()">Ok</button>
+    <div class="form-group ">
+        <button type="submit " class="btn btn-primary " (click)="showParams() ">Ok</button>
     </div>
 </section>
 
-
 <h2>รายงาน {{ title_name }}</h2>
-<section class="form-block" *ngIf="fieldDatas !=''">
-    <button (click)="exportToExcel()" class="btn btn-primary">Export to excel</button>
+<section class="form-block " *ngIf="fieldDatas !='' ">
+    <button (click)="exportToExcel() " class="btn btn-primary ">Export to excel</button>
 </section>
 <clr-datagrid>
-    <clr-dg-column *ngFor="let f of fieldDatas"> {{f}}</clr-dg-column>
+    <clr-dg-column *ngFor="let f of fieldDatas "> {{f}}</clr-dg-column>
     <clr-dg-placeholder>ไม่พบรายการ</clr-dg-placeholder>
-    <clr-dg-row *clrDgItems="let d of tableDatas">
-        <clr-dg-cell *ngFor="let x of d; let idx=index;">
+    <clr-dg-row *clrDgItems="let d of tableDatas ">
+        <clr-dg-cell *ngFor="let x of d; let idx=index; ">
             {{ x }}
         </clr-dg-cell>
     </clr-dg-row>
     
     <clr-dg-footer>
         {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} of {{pagination.totalItems}} rows
-        <clr-dg-pagination #pagination [clrDgPageSize]="50"></clr-dg-pagination>
+        <clr-dg-pagination #pagination [clrDgPageSize]="50 "></clr-dg-pagination>
     </clr-dg-footer>
 </clr-datagrid>

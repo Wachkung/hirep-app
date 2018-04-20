@@ -21,7 +21,9 @@ import { LoginComponent } from './login/login.component';
 import { ViewComponent } from './view/view.component';
 import { MenuitemService } from './admin/common-services/menuitem.service';
 import { HosInfoService } from './admin/common-services/hos-info.service';
-import{AmpurService} from './common-services/ampur.service';
+import { AmpurService } from './common-services/ampur.service';
+import {ClnService}   from './common-services/cln.service';
+import {PcuService}   from './common-services/pcu.service';
 @NgModule({
     declarations: [
         AppComponent,
@@ -45,7 +47,9 @@ import{AmpurService} from './common-services/ampur.service';
         MenuGrpService,
         MenuitemService,
         HirepService,
-        AmpurService
+        AmpurService,
+        ClnService,
+        PcuService
     ],
     bootstrap: [AppComponent]
 })
