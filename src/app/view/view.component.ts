@@ -28,7 +28,6 @@ export class ViewComponent implements OnInit {
     errorMessage: string;
     open: boolean = false;
     isUpdate: boolean = false;
-
     Dataviews: any[] = [];
     AllMenu: any[] = [];
 

@@ -66,7 +66,7 @@
                             <option [value]="'2011'">2554</option>
                         </select>
                     </div>
-                    <div *ngIf="xx !== 'datestart' && xx !== 'dateend' && xx !== 'month' && xx !== 'yearbudget' && xx !=='ampur'
+                    <div *ngIf="xx != 'datestart' && xx !== 'dateend' && xx !== 'month' && xx !== 'yearbudget' && xx !=='ampur'
                     && xx !=='cln'  && xx !=='pcu'">
                         <input type="text" name="xx" id="xx" size="35" value="" #input (keyup)="KeyParam(xx,input,idx)">
                         <!-- <input type="text " name="xx " [(ngModel)]="xx " size="35 "> -->

@@ -33,5 +33,6 @@ app.use(function(err, req, res, next) {
 let port = 4301;
 
 app.listen(port, function() {
-    console.log(Inventory-Web listening on port ${port}!)
+    console.log(`Inventory-Web listening on port ${port}!`)
+
 });
