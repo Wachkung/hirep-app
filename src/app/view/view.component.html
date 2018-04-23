@@ -1,6 +1,17 @@
+
+
+
 <section class="form-block" *ngIf="params !== null">
-    <h3 class="modal-title">From params </h3>
+    
+    <div class="d-inline p-1 bg-primary text-white">ค้นหาข้อมูลตามเงื่อนไข</div>
+    <div class="d-inline p-1 bg-info text-white">  รายงาน {{ title_name }}</div> 
+    <div class="d-inline p-1 bg-ligh text-black" role="alert">
+          Templete .............................................. 
+          </div>
+    
     <div class="modal-body">
+       
+       
         <form>
             <section class="form-block" *ngFor="let xx of param_xx; let idx = index;">
                 <div class="form-group">
@@ -84,16 +95,31 @@
         </form>
     </div>
     <div class="form-group ">
-        <button type="submit" class="btn btn-primary" (click)="showParams()">Ok</button>
+           
+            <div class="form-group row">
+                    <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12">
+                            <button type="submit" class=" btn btn-primary" (click)="showParams()">Ok</button>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                            <section class="form-block " *ngIf="fieldDatas !='' ">
+                                    <button (click)="exportToExcel() " class="btn btn-warning">ส่งออก excel</button>
+                                </section>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                       
+                    </div>
+                </div>
+                  
+      
     </div>
 </section>
+ 
+    
+   
 
-<h2>รายงาน {{ title_name }}</h2>
-<section class="form-block " *ngIf="fieldDatas !='' ">
-    <button (click)="exportToExcel() " class="btn btn-primary ">Export to excel</button>
-</section>
 <clr-datagrid>
-    <clr-dg-column *ngFor="let f of fieldDatas "> {{f}}</clr-dg-column>
+     
+    <clr-dg-column class="alert alert-success"  *ngFor="let f of fieldDatas "> {{f}}</clr-dg-column> 
     <clr-dg-placeholder>ไม่พบรายการ</clr-dg-placeholder>
     <clr-dg-row *clrDgItems="let d of tableDatas ">
         <clr-dg-cell *ngFor="let x of d; let idx=index; ">

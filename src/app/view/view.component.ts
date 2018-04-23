@@ -28,6 +28,7 @@ export class ViewComponent implements OnInit {
     errorMessage: string;
     open: boolean = false;
     isUpdate: boolean = false;
+
     Dataviews: any[] = [];
     AllMenu: any[] = [];
 
@@ -81,7 +82,7 @@ export class ViewComponent implements OnInit {
     ngOnInit() {
         this.showAmpur();
         this.showCln();
-        
+       
         this.showIdpm();
         // this.showDatas();
         // this.sub_id = this.nav.get(sub_item_id)
@@ -315,17 +316,28 @@ export class ViewComponent implements OnInit {
 
                     console.log(res.rows);
                     console.log(res.rows);
+                  
 
                     if (res.rows[1][0] != null) {
                         this.Dataviews = res.rows[0]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
                         this.AllMenu = res.rows[1];
+                     
                         console.log(this.Dataviews);
+ 
+                }else if(res.rows[0][3] != null){
+                    this.Dataviews = res.rows[0][3]; // ตอนรับ ก็ต้องมารับค่า rows แบบ ตัวแปร 1 แยกออกหลายจุด
+                    this.AllMenu = res.rows[1][3];
+                    console.log(this.Dataviews);
 
-                    } else {
-                        this.Dataviews = res.rows[0][2]; // ตอนรับ ก็ต้องมารับค่า rows แบบ ตัวแปร 1 แยกออกหลายจุด
-                        this.AllMenu = res.rows[1][2];
-                        console.log(this.Dataviews);
-                    }
+
+                }else  {
+                    this.Dataviews = res.rows[0][2]; // ตอนรับ ก็ต้องมารับค่า rows แบบ ตัวแปร 1 แยกออกหลายจุด
+                    this.AllMenu = res.rows[1][2];
+                    console.log(this.Dataviews);
+                
+                }
+
+
 
                     _.forEach(this.AllMenu, (v, k) => {  // ดึงข้อมูล colums ไปเก็บไว้ที่ _datafield
                         _datafield.push(v.name);

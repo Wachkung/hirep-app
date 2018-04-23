@@ -197,4 +197,102 @@ export class HirepService {
         });
     }
 
+
+    getBed() {
+        return new Promise((resolve, reject) => {
+            this.authHttp.get(`${this.url}/bed`)
+                .map(res => res.json())
+                .subscribe(data => {
+                    resolve(data);
+                }, error => {
+                    reject(error);
+                });
+        });
+    }
+
+    getTodayReferOut() {
+        return new Promise((resolve, reject) => {
+            this.authHttp.get(`${this.url}/todayreferout`)
+                .map(res => res.json())
+                .subscribe(data => {
+                    resolve(data);
+                }, error => {
+                    reject(error);
+                });
+        });
+    }
+
+    getTodayReferBack() {
+        return new Promise((resolve, reject) => {
+            this.authHttp.get(`${this.url}/todayreferback`)
+                .map(res => res.json())
+                .subscribe(data => {
+                    resolve(data);
+                }, error => {
+                    reject(error);
+                });
+        });
+    }
+
+
+    getTodayReferSocial() {
+        return new Promise((resolve, reject) => {
+            this.authHttp.get(`${this.url}/todayrefersocial`)
+                .map(res => res.json())
+                .subscribe(data => {
+                    resolve(data);
+                }, error => {
+                    reject(error);
+                });
+        });
+    }
+
+    getTodayopddead() {
+        return new Promise((resolve, reject) => {
+            this.authHttp.get(`${this.url}/todayopddead`)
+                .map(res => res.json())
+                .subscribe(data => {
+                    resolve(data);
+                }, error => {
+                    reject(error);
+                });
+        });
+    }
+
+    getTodayipddead() {
+        return new Promise((resolve, reject) => {
+            this.authHttp.get(`${this.url}/todayipddead`)
+                .map(res => res.json())
+                .subscribe(data => {
+                    resolve(data);
+                }, error => {
+                    reject(error);
+                });
+        });
+    }
+
+    getTodaylrbrith() {
+        return new Promise((resolve, reject) => {
+            this.authHttp.get(`${this.url}/todaylrbrith`)
+                .map(res => res.json())
+                .subscribe(data => {
+                    resolve(data);
+                }, error => {
+                    reject(error);
+                });
+        });
+    }
+    getTodaylrWait() {
+        return new Promise((resolve, reject) => {
+            this.authHttp.get(`${this.url}/todaylrwait`)
+                .map(res => res.json())
+                .subscribe(data => {
+                    resolve(data);
+                }, error => {
+                    reject(error);
+                });
+        });
+    }
+
+
 }

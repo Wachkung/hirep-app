@@ -1,66 +1,306 @@
-<h3>รายงานข้อมูล ณ. วันที่ {{ date | date }} </h3>
-<h4>รายงานผู้มารับบริการงานผู้ป่วยนอก</h4>
-<clr-datagrid>
-    <clr-dg-column *ngFor="let x of today">{{x.namecln}}</clr-dg-column>
-    <clr-dg-row *ngFor="let x of today">
-        <clr-dg-cell>{{x.namecln}}</clr-dg-cell>
-        <clr-dg-cell>{{x.cns2}}</clr-dg-cell>
-    </clr-dg-row>
-</clr-datagrid>
 
-<h4>รายงานผู้มารับบริการงานผู้ป่วยนอกวันนี้</h4>
-<clr-datagrid>
-    <clr-dg-column *ngFor="let x of todaytotalmenu">{{x.name}}</clr-dg-column>
-    <clr-dg-row *ngFor="let x of todaytotal">
-        <clr-dg-cell>{{x.Num}}</clr-dg-cell>
-        <clr-dg-cell>{{x.namecln}}</clr-dg-cell>
-        <clr-dg-cell>{{x.cln}}</clr-dg-cell>
-        <clr-dg-cell>{{x.cns2}}</clr-dg-cell>
-    </clr-dg-row>
-</clr-datagrid>
 
-<h4> รายงานผู้มารับบริการงานผู้ป่วยนอกแยกตามสิทธิ</h4>
-<clr-datagrid>
-    <clr-dg-column *ngFor="let x of todaytypemenu">{{x.name}}</clr-dg-column>
-    <clr-dg-row *ngFor="let x of todaytype">
-        <clr-dg-cell>{{x.Num}}</clr-dg-cell>
-        <clr-dg-cell>{{x.icd10}}</clr-dg-cell>
-        <clr-dg-cell>{{x.pttype}}</clr-dg-cell>
-        <clr-dg-cell>{{x.inscl}}</clr-dg-cell>
-        <clr-dg-cell>{{x.can}}</clr-dg-cell>
-    </clr-dg-row>
-</clr-datagrid>
+<div class="d-inline p-1 bg-primary text-white">รายงานสรุป  ข้อมูล ณ. วันที่ {{ date | date }} </div>
+<div class="row">
+           
+                <div class="col-sm-6">
+                      
+            
+            <div class="alert alert-info">
+                        <h5>รายงานผู้มารับบริการงานผู้ป่วยนอกทั้งหมด</h5>
+                      </div>
+            
+          
+          
+            <clr-datagrid>
+                <clr-dg-column *ngFor="let x of todaymenu">{{x.name}}</clr-dg-column>
+                <clr-dg-row *ngFor="let x of today">
+                    <clr-dg-cell>{{x.tody}}</clr-dg-cell>
+                    <clr-dg-cell>{{x.amount}}</clr-dg-cell>
+                </clr-dg-row>
+            </clr-datagrid>
+        
+            <div class="col-sm-12">
+                    <div class="alert alert-danger">
+                            <h5>รายงานเสียชีวิตผู้ป่วยนอก</h5>
+                          </div>
+                
+              
+              
+                <clr-datagrid>
+                    <clr-dg-column *ngFor="let x of opddeadmenu">{{x.name}}</clr-dg-column>
+                    <clr-dg-row *ngFor="let x of opddead">
+                        <clr-dg-cell>{{x.dead_date}}</clr-dg-cell>
+                        <clr-dg-cell>{{x.dead_time}}</clr-dg-cell>
+                        <clr-dg-cell>{{x.icd10}}</clr-dg-cell>
+                        <clr-dg-cell>{{x.icd10name}}</clr-dg-cell>
+                        <clr-dg-cell>{{x.clinic}}</clr-dg-cell>
+                    </clr-dg-row>
+                </clr-datagrid>
+               
+            
+            
+            
+            </div>
 
-<h4> รายงานจำนวนผู้ป่วยนอก แยกตาม ICD10 </h4>
-<clr-datagrid>
-    <clr-dg-column *ngFor="let x of opicdtmmenu">{{x.name}}</clr-dg-column>
-    <clr-dg-row *ngFor="let x of opicdtm">
-        <clr-dg-cell>{{x.Num}}</clr-dg-cell>
-        <clr-dg-cell>{{x.ICD10}}</clr-dg-cell>
-        <clr-dg-cell>{{x.ICD10NAME}}</clr-dg-cell>
-        <clr-dg-cell>{{x.Total}}</clr-dg-cell>
-    </clr-dg-row>
-</clr-datagrid>
-<h4> รายงานจำนวนผู้ป่วยห้องอุบัติเหตุฉุกเฉิน แยกตาม ICD10 </h4>
-<clr-datagrid>
-    <clr-dg-column *ngFor="let x of ericdtmmenu">{{x.name}}</clr-dg-column>
-    <clr-dg-row *ngFor="let x of ericdtm">
-        <clr-dg-cell>{{x.Num}}</clr-dg-cell>
-        <clr-dg-cell>{{x.ICD10}}</clr-dg-cell>
-        <clr-dg-cell>{{x.ICD10NAME}}</clr-dg-cell>
-        <clr-dg-cell>{{x.Total}}</clr-dg-cell>
-    </clr-dg-row>
-</clr-datagrid>
-<h4> รายงานจำนวนผู้ป่วยทัตกรรม แยกตาม ICD10 </h4>
-<clr-datagrid>
-    <clr-dg-column *ngFor="let x of dticdtmmenu">{{x.name}}</clr-dg-column>
-    <clr-dg-row *ngFor="let x of dticdtm">
-        <clr-dg-cell>{{x.Num}}</clr-dg-cell>
-        <clr-dg-cell>{{x.ICD10}}</clr-dg-cell>
-        <clr-dg-cell>{{x.ICD10NAME}}</clr-dg-cell>
-        <clr-dg-cell>{{x.Total}}</clr-dg-cell>
-    </clr-dg-row>
-</clr-datagrid>
+            <div class="col-sm-12">
+                    <div class="alert alert-danger">
+                            <h5>รายงานเสียชีวิตผู้ป่วยใน</h5>
+                          </div>
+                
+              
+              
+                <clr-datagrid>
+                    <clr-dg-column *ngFor="let x of ipddeadmenu">{{x.name}}</clr-dg-column>
+                    <clr-dg-row *ngFor="let x of ipddead">
+                        <clr-dg-cell>{{x.dead_date}}</clr-dg-cell>
+                        <clr-dg-cell>{{x.dead_time}}</clr-dg-cell>
+                        <clr-dg-cell>{{x.icd10}}</clr-dg-cell>
+                        <clr-dg-cell>{{x.icd10name}}</clr-dg-cell>
+                        <clr-dg-cell>{{x.dprtm}}</clr-dg-cell>
+                    </clr-dg-row>
+                </clr-datagrid>
+               
+            
+            
+            
+            </div>
+
+
+
+
+
+
+
+        
+        </div>
+
+
+        <div class="col-sm-6">
+            
+            
+                        <div class="alert alert-info">
+                                <h5>รายงานผู้มารับบริการงานผู้ป่วยนอกแยกตามแผนก</h5>
+                              </div>
+         
+            <clr-datagrid>
+                <clr-dg-column *ngFor="let x of todaytotalmenu">{{x.name}}</clr-dg-column>
+                <clr-dg-row *ngFor="let x of todaytotal">
+                    <clr-dg-cell>{{x.Num}}</clr-dg-cell>
+                    <clr-dg-cell>{{x.namecln}}</clr-dg-cell>
+                    <clr-dg-cell>{{x.cln}}</clr-dg-cell>
+                    <clr-dg-cell>{{x.amount}}</clr-dg-cell>
+                </clr-dg-row>
+            </clr-datagrid></div>
+         
+      </div>
+
+
+      <div class="alert alert-danger">
+          
+          </div>
+
+
+
+
+
+
+ 
+      <div class="row">
+           
+            <div class="col-sm-6"> 
+                    <div class="alert alert-info">
+                    <h4> รายงานผู้มารับบริการงานผู้ป่วยนอกแยกตามสิทธิ</h4>
+                </div>
+                   
+                    <clr-datagrid>
+                        <clr-dg-column *ngFor="let x of todaytypemenu">{{x.name}}</clr-dg-column>
+                        <clr-dg-row *ngFor="let x of todaytype">
+                            <clr-dg-cell>{{x.Num}}</clr-dg-cell>
+                            <clr-dg-cell>{{x.namepttype}}</clr-dg-cell>
+                            <clr-dg-cell>{{x.pttype}}</clr-dg-cell>
+                            <clr-dg-cell>{{x.inscl}}</clr-dg-cell>
+                            <clr-dg-cell>{{x.amount}}</clr-dg-cell>
+                        </clr-dg-row>
+                    </clr-datagrid>
+            </div>
+            <div class="col-sm-6"> 
+                                              
+                    <div class="alert alert-info">
+                    <h4> รายงานจำนวนผู้ป่วยนอก แยกตาม ICD10 </h4>
+                    </div>
+                    <clr-datagrid>
+                        <clr-dg-column *ngFor="let x of opicdtmmenu">{{x.name}}</clr-dg-column>
+                        <clr-dg-row *ngFor="let x of opicdtm">
+                            <clr-dg-cell>{{x.Num}}</clr-dg-cell>
+                            <clr-dg-cell>{{x.ICD10}}</clr-dg-cell>
+                            <clr-dg-cell>{{x.ICD10NAME}}</clr-dg-cell>
+                            <clr-dg-cell>{{x.Total}}</clr-dg-cell>
+                        </clr-dg-row>
+                    </clr-datagrid>
+            
+            </div>
+          </div>
+
+          <div class="alert alert-danger">
+                
+                </div>
+      
+          <div class="row">
+              
+                <div class="col-sm-6">
+                        <div class="alert alert-info">
+                        <h4> รายงานจำนวนผู้ป่วยห้องอุบัติเหตุฉุกเฉิน แยกตาม ICD10 </h4></div>
+                        <clr-datagrid>
+                            <clr-dg-column *ngFor="let x of ericdtmmenu">{{x.name}}</clr-dg-column>
+                            <clr-dg-row *ngFor="let x of ericdtm">
+                                <clr-dg-cell>{{x.Num}}</clr-dg-cell>
+                                <clr-dg-cell>{{x.ICD10}}</clr-dg-cell>
+                                <clr-dg-cell>{{x.ICD10NAME}}</clr-dg-cell>
+                                <clr-dg-cell>{{x.Total}}</clr-dg-cell>
+                            </clr-dg-row>
+                        </clr-datagrid>
+                    
+                    
+                    
+                    </div>
+                <div class="col-sm-6">
+                        <div class="alert alert-info">
+                        <h4> รายงานจำนวนผู้ป่วยทัตกรรม แยกตาม ICD10 </h4></div>
+                        <clr-datagrid>
+                            <clr-dg-column *ngFor="let x of dticdtmmenu">{{x.name}}</clr-dg-column>
+                            <clr-dg-row *ngFor="let x of dticdtm">
+                                <clr-dg-cell>{{x.Num}}</clr-dg-cell>
+                                <clr-dg-cell>{{x.ICD10}}</clr-dg-cell>
+                                <clr-dg-cell>{{x.ICD10NAME}}</clr-dg-cell>
+                                <clr-dg-cell>{{x.Total}}</clr-dg-cell>
+                            </clr-dg-row>
+                        </clr-datagrid>
+
+
+                </div>
+              </div>
+
+              <div class="alert alert-danger">
+                    
+                    </div>
+          
+
+                    <div class="row">
+              <div class="col-sm-6">
+                    <div class="alert alert-info">
+                    <h4> รายงานจำนวนยอดผู้ป่วยใน </h4></div>
+                    <clr-datagrid>
+                        <clr-dg-column *ngFor="let x of bedmenu">{{x.name}}</clr-dg-column>
+                        <clr-dg-row *ngFor="let x of bed">
+                                <clr-dg-cell>{{x.regdate}}</clr-dg-cell>
+                            <clr-dg-cell>{{x.regtime}}</clr-dg-cell>
+                            <clr-dg-cell>{{x.ward_code}}</clr-dg-cell>
+                            <clr-dg-cell>{{x.ward_name}}</clr-dg-cell>
+                            <clr-dg-cell>{{x.ward_bed}}</clr-dg-cell>
+                            <clr-dg-cell>{{x.ward_pt}}</clr-dg-cell>
+                        </clr-dg-row>
+                    </clr-datagrid>
+                    <div class="col-sm-">
+                            <div class="alert alert-info">
+                                    <h4> รายงานจำนวนการคลอด </h4></div>
+                                    <clr-datagrid>
+                                        <clr-dg-column *ngFor="let x of lrbirthmenu">{{x.name}}</clr-dg-column>
+                                        <clr-dg-row *ngFor="let x of lrbirth">
+                                                <clr-dg-cell>{{x.brthdate}}</clr-dg-cell>
+                                            <clr-dg-cell>{{x.brthtime}}</clr-dg-cell>
+                                            <clr-dg-cell>{{x.icd10}}</clr-dg-cell>
+                                            <clr-dg-cell>{{x.icd10name}}</clr-dg-cell>
+                                            <clr-dg-cell>{{x.sex}}</clr-dg-cell>
+                                            <clr-dg-cell>{{x.brthwt}}</clr-dg-cell>
+                                            <clr-dg-cell>{{x.alive}}</clr-dg-cell>
+                                        </clr-dg-row>
+                                    </clr-datagrid>
+                    </div>
+                    <div class="col-sm-6">
+                            
+                            </div>
+           
+           
+           
+           
+                        </div>
+         
+
+
+
+          
+          
+                    <div class="col-sm-6">
+                            <div class="alert alert-info">
+                                    <h4> รายงานการส่งตอ </h4></div>
+                                    <clr-datagrid>
+                                        <clr-dg-column *ngFor="let x of referoutmenu">{{x.name}}</clr-dg-column>
+                                        <clr-dg-row *ngFor="let x of referout">
+                                                <clr-dg-cell>{{x.refer_date}}</clr-dg-cell>
+                                            <clr-dg-cell>{{x.refer_time}}</clr-dg-cell>
+                                            <clr-dg-cell>{{x.clinic}}</clr-dg-cell>
+                                            <clr-dg-cell>{{x.icd10name}}</clr-dg-cell>
+                                            <clr-dg-cell>{{x.refer_to_hos}}</clr-dg-cell>
+                                          
+                                        </clr-dg-row>
+                                    </clr-datagrid>
+                                    <div class="col-sm-12">
+                                            <div class="alert alert-info">
+                                                    <h4> รายงานการรับRefer </h4></div>
+                                                    <clr-datagrid>
+                                                        <clr-dg-column *ngFor="let x of referbackmenu">{{x.name}}</clr-dg-column>
+                                                        <clr-dg-row *ngFor="let x of referback">
+                                                                <clr-dg-cell>{{x.refer_date}}</clr-dg-cell>
+                                                            <clr-dg-cell>{{x.refer_time}}</clr-dg-cell>
+                                                            <clr-dg-cell>{{x.dprtm}}</clr-dg-cell>
+                                                            <clr-dg-cell>{{x.icd10name}}</clr-dg-cell>
+                                                            <clr-dg-cell>{{x.refer_in_hos}}</clr-dg-cell>
+                                                          
+                                                        </clr-dg-row>
+                                                    </clr-datagrid>
+                                        </div>
+
+                                        <div class="col-sm-12">
+
+                                                <div class="alert alert-info">
+                                                        <h4> รายงานการส่งกลับReferในเครื่อข่าย </h4></div>
+                                                        <clr-datagrid>
+                                                            <clr-dg-column *ngFor="let x of refersocialmenu">{{x.name}}</clr-dg-column>
+                                                            <clr-dg-row *ngFor="let x of refersocial">
+                                                                    <clr-dg-cell>{{x.refer_date}}</clr-dg-cell>
+                                                                <clr-dg-cell>{{x.refer_time}}</clr-dg-cell>
+                                                                <clr-dg-cell>{{x.dprtm}}</clr-dg-cell>
+                                                                <clr-dg-cell>{{x.icd10name}}</clr-dg-cell>
+                                                                <clr-dg-cell>{{x.refer_so_hos}}</clr-dg-cell>
+                                                              
+                                                            </clr-dg-row>
+                                                        </clr-datagrid>
+                                            </div>
+
+                                            <div class="col-sm-12">
+                                                    <div class="alert alert-info">
+                                                            <h4> รายงานการรอคลอด </h4></div>
+                                                            <clr-datagrid>
+                                                                <clr-dg-column *ngFor="let x of lrwaitmenu">{{x.name}}</clr-dg-column>
+                                                                <clr-dg-row *ngFor="let x of lrwait">
+                                                                        <clr-dg-cell>{{x.ward}}</clr-dg-cell>
+                                                                    <clr-dg-cell>{{x.rgtdate}}</clr-dg-cell>
+                                                                    <clr-dg-cell>{{x.wait_case}}</clr-dg-cell>
+                                                                   
+                                                                  
+                                                                </clr-dg-row>
+                                                            </clr-datagrid>
+                                                    </div>
+                        </div>
+
+</div>
+
+                        <div class="alert alert-danger">
+                                
+                                </div>
+
+
 <h4> รายงานจำนวนผู้มารับบริการกับมารับบริการห้องฉุกเฉิน ด้วยโรคเดิมใน 24 ชั่วโมง</h4>
 <clr-datagrid>
     <clr-dg-column *ngFor="let x of reviermenu">{{x.name}}</clr-dg-column>

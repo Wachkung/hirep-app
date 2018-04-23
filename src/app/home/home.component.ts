@@ -36,6 +36,23 @@ export class HomeComponent implements OnInit {
     ericdtmmenu: any[] = [];
     dticdtmmenu: any[] = [];
     reopucmenu: any[] = [];
+    bed: any[] = [];
+    bedmenu: any[] = [];
+    referout: any[] = [];
+    referoutmenu: any[] = [];
+    referback: any[] = [];
+    referbackmenu: any[] = [];
+    refersocial: any[] = [];
+    refersocialmenu: any[] = [];
+    opddead: any[] = [];
+    opddeadmenu: any[] = [];
+    ipddead: any[] = [];
+    ipddeadmenu: any[] = [];
+    lrbirth: any[] = [];
+    lrbirthmenu: any[] = [];
+    lrwait: any[] = [];
+    lrwaitmenu: any[] = [];
+
     rowLength: any;
     date: Date = new Date();
     mode = 'Promise';
@@ -54,6 +71,15 @@ export class HomeComponent implements OnInit {
         this.showEricdtm();
         this.showDticdtm();
         this.showReopuc();
+        this.showBed();
+        this.showTodayReferOut();
+        this.showTodayReferBack();
+       this.showTodayReferOut();
+       this.showTodayOpdDead();
+       this.showTodayIpdDead();
+       this.showTodayReferSocial();
+       this.showTodayLrBirth();
+       this.showTodayLrWait();
         //  this.showPass();
 
     }
@@ -192,5 +218,137 @@ export class HomeComponent implements OnInit {
                 console.log(error);
             })
     }
+
+    showBed() {
+        this.bed = [];
+        this.hirepService.getBed()
+            .then((result: any) => {
+                if (result.ok) {
+                    this.bed = result.rows[0]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
+                    this.bedmenu = result.rows[1]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
+
+                    // console.log(this.today);
+                    // console.log(this.today[0]);
+                }
+            }).catch(error => {
+                console.log(error);
+            })
+    }
+
+    showTodayReferOut() {
+        this.referout = [];
+        this.hirepService.getTodayReferOut()
+            .then((result: any) => {
+                if (result.ok) {
+                    this.referout = result.rows[0]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
+                    this.referoutmenu = result.rows[1]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
+
+                    // console.log(this.today);
+                    // console.log(this.today[0]);
+                }
+            }).catch(error => {
+                console.log(error);
+            })
+    }
+
+    showTodayReferBack() {
+        this.referback = [];
+        this.hirepService.getTodayReferBack()
+            .then((result: any) => {
+                if (result.ok) {
+                    this.referback = result.rows[0]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
+                    this.referbackmenu = result.rows[1]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
+
+                    // console.log(this.today);
+                    // console.log(this.today[0]);
+                }
+            }).catch(error => {
+                console.log(error);
+            })
+    }
+    showTodayReferSocial() {
+        this.refersocial = [];
+        this.hirepService.getTodayReferSocial()
+            .then((result: any) => {
+                if (result.ok) {
+                    this.refersocial = result.rows[0]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
+                    this.refersocialmenu = result.rows[1]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
+
+                    // console.log(this.today);
+                    // console.log(this.today[0]);
+                }
+            }).catch(error => {
+                console.log(error);
+            })
+    }
+
+
+
+    showTodayOpdDead() {
+        this.opddead = [];
+        this.hirepService.getTodayopddead()
+            .then((result: any) => {
+                if (result.ok) {
+                    this.opddead = result.rows[0]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
+                    this.opddeadmenu = result.rows[1]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
+
+                    // console.log(this.today);
+                    // console.log(this.today[0]);
+                }
+            }).catch(error => {
+                console.log(error);
+            })
+    }
+
+    showTodayIpdDead() {
+        this.ipddead = [];
+        this.hirepService.getTodayipddead()
+            .then((result: any) => {
+                if (result.ok) {
+                    this.ipddead = result.rows[0]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
+                    this.ipddeadmenu = result.rows[1]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
+
+                    // console.log(this.today);
+                    // console.log(this.today[0]);
+                }
+            }).catch(error => {
+                console.log(error);
+            })
+    }
+
+    showTodayLrBirth() {
+        this.lrbirth = [];
+        this.hirepService.getTodaylrbrith()
+            .then((result: any) => {
+                if (result.ok) {
+                    this.lrbirth = result.rows[0]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
+                    this.lrbirthmenu = result.rows[1]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
+
+                    // console.log(this.today);
+                    // console.log(this.today[0]);
+                }
+            }).catch(error => {
+                console.log(error);
+            })
+    }
+
+    showTodayLrWait() {
+        this.lrwait = [];
+        this.hirepService.getTodaylrWait()
+            .then((result: any) => {
+                if (result.ok) {
+                    this.lrwait = result.rows[0]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
+                    this.lrwaitmenu = result.rows[1]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
+
+                    // console.log(this.today);
+                    // console.log(this.today[0]);
+                }
+            }).catch(error => {
+                console.log(error);
+            })
+    }
+
+
+
 
 }
