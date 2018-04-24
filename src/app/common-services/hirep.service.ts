@@ -293,6 +293,29 @@ export class HirepService {
                 });
         });
     }
+    getTodayRevisit() {
+        return new Promise((resolve, reject) => {
+            this.authHttp.get(`${this.url}/todayrevisit`)
+                .map(res => res.json())
+                .subscribe(data => {
+                    resolve(data);
+                }, error => {
+                    reject(error);
+                });
+        });
+    }
+    getTodayAccident() {
+        return new Promise((resolve, reject) => {
+            this.authHttp.get(`${this.url}/todayaccident`)
+                .map(res => res.json())
+                .subscribe(data => {
+                    resolve(data);
+                }, error => {
+                    reject(error);
+                });
+        });
+    }
+
 
 
 }

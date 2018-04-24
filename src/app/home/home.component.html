@@ -1,5 +1,9 @@
 
 
+ 
+    
+
+
 <div class="d-inline p-1 bg-primary text-white">รายงานสรุป  ข้อมูล ณ. วันที่ {{ date | date }} </div>
 <div class="row">
            
@@ -20,7 +24,7 @@
                 </clr-dg-row>
             </clr-datagrid>
         
-            <div class="col-sm-12">
+           
                     <div class="alert alert-danger">
                             <h5>รายงานเสียชีวิตผู้ป่วยนอก</h5>
                           </div>
@@ -41,9 +45,9 @@
             
             
             
-            </div>
+           
 
-            <div class="col-sm-12">
+            
                     <div class="alert alert-danger">
                             <h5>รายงานเสียชีวิตผู้ป่วยใน</h5>
                           </div>
@@ -64,9 +68,32 @@
             
             
             
-            </div>
+            
 
-
+       
+                <div class="alert alert-warning">
+                        <h5>รายงานผู้ป่วยRevisit</h5>
+                      </div>
+            
+          
+          
+            <clr-datagrid>
+                <clr-dg-column *ngFor="let x of revisitmenu">{{x.name}}</clr-dg-column>
+                <clr-dg-row *ngFor="let x of revisit">
+                    <clr-dg-cell>{{x.sex}}</clr-dg-cell>
+                    <clr-dg-cell>{{x.age}}</clr-dg-cell>
+                    <clr-dg-cell>{{x.dx}}</clr-dg-cell>
+                  
+                    <clr-dg-cell>{{x.fvisit}}</clr-dg-cell>
+                    <clr-dg-cell>{{x.revisit}}</clr-dg-cell>
+                    <clr-dg-cell>{{x.revtime}}</clr-dg-cell>
+                </clr-dg-row>
+            </clr-datagrid>
+           
+        
+        
+        
+        
 
 
 
@@ -91,9 +118,39 @@
                     <clr-dg-cell>{{x.cln}}</clr-dg-cell>
                     <clr-dg-cell>{{x.amount}}</clr-dg-cell>
                 </clr-dg-row>
-            </clr-datagrid></div>
+            </clr-datagrid>
+        
+        
+            <div class="alert alert-danger">
+                
+                    <h5>รายงานสรุปอบัติเหตุฉกเฉิน</h5>
+                  </div>
+        
+        <clr-datagrid>
+        <clr-dg-column *ngFor="let x of accidentmenu">{{x.name}}</clr-dg-column>
+        <clr-dg-row *ngFor="let x of accident">
+        <clr-dg-cell>{{x.name_acci}}</clr-dg-cell>
+        <clr-dg-cell>{{x.icd10}}</clr-dg-cell>
+        <clr-dg-cell>{{x.icd10name}}</clr-dg-cell>
+        <clr-dg-cell>{{x.amount}}</clr-dg-cell>
+        </clr-dg-row>
+        </clr-datagrid>
+        
+        
+        
+        
+        
+        
+        
+        </div>
          
-      </div>
+     
+     
+     
+     
+     
+     
+        </div>
 
 
       <div class="alert alert-danger">
@@ -264,7 +321,7 @@
                                         <div class="col-sm-12">
 
                                                 <div class="alert alert-info">
-                                                        <h4> รายงานการส่งกลับReferในเครื่อข่าย </h4></div>
+                                                        <h4> รายงานการส่งRefeผู้ป่วยใน </h4></div>
                                                         <clr-datagrid>
                                                             <clr-dg-column *ngFor="let x of refersocialmenu">{{x.name}}</clr-dg-column>
                                                             <clr-dg-row *ngFor="let x of refersocial">
@@ -300,26 +357,7 @@
                                 
                                 </div>
 
-
-<h4> รายงานจำนวนผู้มารับบริการกับมารับบริการห้องฉุกเฉิน ด้วยโรคเดิมใน 24 ชั่วโมง</h4>
-<clr-datagrid>
-    <clr-dg-column *ngFor="let x of reviermenu">{{x.name}}</clr-dg-column>
-    <clr-dg-row *ngFor="let x of revier">
-        <clr-dg-cell>{{x.Num}}</clr-dg-cell>
-        <clr-dg-cell>{{x.m}}</clr-dg-cell>
-        <clr-dg-cell>{{x.ICD10NAME}}</clr-dg-cell>
-        <clr-dg-cell>{{x.revisit}}</clr-dg-cell>
-    </clr-dg-row>
-</clr-datagrid>
-<h4> รายงานจำนวนผู้มารับบริการตึกผู้ป่วยนอก Refer สิทธิ์ UCS </h4>
-<clr-datagrid>
-    <clr-dg-column *ngFor="let x of reopucmenu">{{x.name}}</clr-dg-column>
-    <clr-dg-row *ngFor="let x of reopuc">
-        <clr-dg-cell>{{x.Num}}</clr-dg-cell>
-        <clr-dg-cell>{{x.month}}</clr-dg-cell>
-        <clr-dg-cell>{{x.count}}</clr-dg-cell>
-    </clr-dg-row>
-</clr-datagrid>
+ 
 
 <!--
 <h2>ทดสอบ Dynamic Data</h2>

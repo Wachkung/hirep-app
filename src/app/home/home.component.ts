@@ -52,6 +52,10 @@ export class HomeComponent implements OnInit {
     lrbirthmenu: any[] = [];
     lrwait: any[] = [];
     lrwaitmenu: any[] = [];
+    revisit: any[] = [];
+    revisitmenu: any[] = [];
+    accident: any[] = [];
+    accidentmenu: any[] = [];
 
     rowLength: any;
     date: Date = new Date();
@@ -66,11 +70,11 @@ export class HomeComponent implements OnInit {
         this.showToday();
         this.showTodaytotal();
         this.showTodaytype();
-        this.showRevier();
+    //    this.showRevier();
         this.showOpicdtm();
         this.showEricdtm();
         this.showDticdtm();
-        this.showReopuc();
+     //   this.showReopuc();
         this.showBed();
         this.showTodayReferOut();
         this.showTodayReferBack();
@@ -80,6 +84,8 @@ export class HomeComponent implements OnInit {
        this.showTodayReferSocial();
        this.showTodayLrBirth();
        this.showTodayLrWait();
+       this.showTodayRevisit();
+       this.showTodayAccident();
         //  this.showPass();
 
     }
@@ -348,6 +354,36 @@ export class HomeComponent implements OnInit {
             })
     }
 
+    showTodayRevisit() {
+        this.revisit = [];
+        this.hirepService.getTodayRevisit()
+            .then((result: any) => {
+                if (result.ok) {
+                    this.revisit = result.rows[0]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
+                    this.revisitmenu = result.rows[1]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
+
+                    // console.log(this.today);
+                    // console.log(this.today[0]);
+                }
+            }).catch(error => {
+                console.log(error);
+            })
+    }
+    showTodayAccident() {
+        this.accident = [];
+        this.hirepService.getTodayAccident()
+            .then((result: any) => {
+                if (result.ok) {
+                    this.accident = result.rows[0]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
+                    this.accidentmenu = result.rows[1]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
+
+                    // console.log(this.today);
+                    // console.log(this.today[0]);
+                }
+            }).catch(error => {
+                console.log(error);
+            })
+    }
 
 
 
